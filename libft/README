@@ -1,0 +1,7 @@
+Instrucciones Tester
+
+Repositorio:
+git clone https://github.com/y3ll0w42/libft-war-machine
+
+Ejecutarlo:
+bash grademe.sh (Donde esté lo que te has descargado)
