@@ -9,6 +9,8 @@
 /*   Updated: 2022/09/13 18:14:26 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
+
 int	ft_strlen(char *s);
 
 int	strlcpy(char *dst, char *src, int size)
