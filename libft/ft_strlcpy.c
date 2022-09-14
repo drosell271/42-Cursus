@@ -11,22 +11,31 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-int	ft_strlen(char *s);
+unsigned int	aux_strlen(char *s)
+{
+	int	c;
 
-int	strlcpy(char *dst, char *src, int size)
+	c = 0;
+	while (s[c] != '\0')
+		c++;
+	return (c);
+}
+
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
 	unsigned int	c;
 	unsigned int	z;
 
-	z = ft_strlen(src);
+	z = aux_strlen(src);
 	c = 0;
 	if (size != 0)
 	{
-		while (src [c] != '\0' && x < size - 1)
+		while (src [c] != '\0' && c < size - 1)
 		{
-			dest [c] = src [c];
+			dest[c] = src[c];
 			c++;
 		}
+		dest[c] = '\0';
 	}
 	return (z);
 }

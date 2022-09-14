@@ -20,7 +20,7 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	a = 0;
 	b = 0;
 	c = 0;
-	while (dest[a] != '\0' )
+	while (dest[a] != '\0' && a < size)
 	{
 		a++;
 	}
