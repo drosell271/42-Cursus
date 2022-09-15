@@ -24,5 +24,6 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size);
 int             ft_strncmp(char *s1, char *s2, unsigned int n);
 int             ft_toupper(int c);
 int             ft_tolower(int c);
+int             ft_strncmp(char *s1, char *s2, unsigned int n);
 
 #endif
