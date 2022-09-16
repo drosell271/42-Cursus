@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-unsigned int	aux_strlen(char *s)
+size_t	aux_strlen(char *s)
 {
 	int	c;
 
@@ -21,10 +21,10 @@ unsigned int	aux_strlen(char *s)
 	return (c);
 }
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+size_t	ft_strlcpy(char *dest, char *src, size_t size)
 {
-	unsigned int	c;
-	unsigned int	z;
+	size_t	c;
+	size_t	z;
 
 	z = aux_strlen(src);
 	c = 0;

@@ -11,11 +11,11 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
+size_t	ft_strlcat(char *dest, char *src, size_t size)
 {
-	unsigned int		a;
-	int					b;
-	int					c;
+	size_t		a;
+	int			b;
+	int			c;
 
 	a = 0;
 	b = 0;

@@ -11,16 +11,14 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-void	ft_bzero(void *s, unsigned int n)
+void	ft_bzero(void *s, size_t n)
 {
-	unsigned int	count;
-	unsigned char	*cast;
+	size_t			count;
 
 	count = 0;
-	cast = (unsigned char *)s;
-	while (count <= n)
+	while (count < n)
 	{
-		cast[count] = '\0';
+		((unsigned char *) s)[count] = '\0';
 		count++;
 	}
 }
