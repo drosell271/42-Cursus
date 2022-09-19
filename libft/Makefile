@@ -1,6 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-CFILES = 	ft_bzero.c   \
+CFILES = 	ft_atoi.c    \
+			ft_bzero.c   \
 			ft_isalnum.c \
 			ft_isascii.c \
 			ft_isprint.c \
@@ -14,7 +15,8 @@ CFILES = 	ft_bzero.c   \
 			ft_strlcat.c \
 			ft_strlen.c  \
 			ft_memset.c	 \
-			ft_tolower.c 
+			ft_tolower.c
+			
 HDRS = libft.h
 OBJS = ${CFILES:.c=.o}
 LIB = libft.a

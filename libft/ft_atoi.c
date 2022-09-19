@@ -10,50 +10,87 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int special(char test, int num)
+#include "libft.h"
+
+int	signo(int *var, const char *str)
 {
-	if (test == ' ' || test == '\f' || test == '\n' || test == '\r' 
-	|| test == '\t' || test == '\v' )
+	int	c;
+
+	c = 0;
+	while (str[c] != '\0')
 	{
-		return (1);
+		if (str[c] == '+')
+		{
+			var[0]++;
+			var[1] = 1;
+		}
+		if (str[c] == '-')
+		{
+			var[0]++;
+			var[1] = -1;
+		}
+		c++;
 	}
-	return(0);
+	return (var);
 }
 
-int check_signo(char test, int signo)
+int	num(int *var, const char *str)
 {
-	if(signo == 0)
+	int	c;
+
+	c = 0;
+	while (str[c] != '\0')
 	{
-		if (test == '-')
-			return (1);
-		if (test == '+')
-			return (2);
+		if (var[2] == -1 && str[c] >= '0' && str[c] <= '9')
+			var[2] = c;
+		c++;
 	}
-	if
+	return (var);
+}
+
+int	leter(int *var, const char *str)
+{
+	int	c;
+
+	c = 0;
+	while (str[c] != '\0')
+	{
+		if (str[c] < '0' || str[c] > '9')
+		{
+			if (c < str[2])
+			{
+				if (str[c] != ' ' || str[c] != '\t' || str[c] != '\n'
+					|| str[c] != '\v' || str[c] != '\f' || str[c] != '\r')
+					var[3] = c;
+			}
+			else if (c > str[2])
+				var[3] = c;
+		}
+	}
+	return (var);
 }
 
 int	atoi(const char *str)
 {
-	int	c;
-	int signo;
-	int value;
+	int	[4]	var;
+	int		c;
+	int		result;
 
 	c = 0;
-	signo = 0;
-	value = 0;
-	while(str[c] != '\0')
+	result = 0;
+	var = {0, 0, -1, 0};
+	var = signo(var, str);
+	var = num(var, str);
+	var = leter(var, str);
+	if (var[0] > 1)
+		return (0);
+	else if (var[2] > var[3])
+		return (0);
+	c = var[2];
+	while (c <= var[3])
 	{
-		if (signo == 0 )
-		{
-			if (str[c] == '-')
-				signo = 1;
-			if (str[c] == '+')
-				signo = 2;
-		}
-		else
-		{
-			
-		}
+		result = str[c] + result * 10;
 		c++;
 	}
+	return (result * var[1]);
 }
