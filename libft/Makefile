@@ -15,7 +15,8 @@ CFILES = 	ft_atoi.c    \
 			ft_strlcat.c \
 			ft_strlen.c  \
 			ft_memset.c	 \
-			ft_tolower.c
+			ft_tolower.c \
+			ft_memchr.c
 			
 HDRS = libft.h
 OBJS = ${CFILES:.c=.o}
