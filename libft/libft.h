@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 19:17:31 by drosell-          #+#    #+#             */
-/*   Updated: 2022/09/16 18:40:44 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/09/20 10:18:09 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define LIBFT_H
 # include <stdlib.h>
 
-int	atoi(const char *str);
+int		ft_atoi(const char *str);
 //char	*strchr(const char *s, int c);
 void	ft_bzero(void *s, size_t n);
 int		ft_isalnum(int c);
