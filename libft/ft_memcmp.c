@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/20 10:43:41 by drosell-          #+#    #+#             */
-/*   Updated: 2022/09/20 11:00:39 by drosell-         ###   ########.fr       */
+/*   Created: 2022/09/20 10:59:17 by drosell-          #+#    #+#             */
+/*   Updated: 2022/09/20 11:03:56 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t			i;
-	unsigned char	*cadena;
-	void			*buscado;
+	size_t	i;
 
 	i = 0;
-	cadena = (unsigned char *)s;
-	buscado = NULL;
 	while (i < n)
 	{
-		if (cadena[i] == (unsigned char)c)
-		{
-			buscado = &cadena[i];
-			break ;
-		}
+		if (((unsigned char *)s1)[i] != ((unsigned char *)s2)[i])
+			return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
 		i++;
 	}
-	return (buscado);
+	return (0);
 }
