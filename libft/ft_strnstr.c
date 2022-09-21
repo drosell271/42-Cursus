@@ -15,17 +15,27 @@
 char *ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	count_big;
-	size_t	count_small;
+	size_t	count_little;
 
-	while (big[count_big])
+	count_big = 0;
+	count_little = 0;
+	while(!big[count_big])
 	{
-		while (small[count_small])
+		while(!little[count_small])
 		{
-			if (big[count_big + count_small] == small[count_small])
-
-			count_small++;
+			if (big[count_big + count_small] == little[count_small])
+			{
+				
+				count_small++;
+			}
+			break;
 		}
 		count_small = 0;
+		count_big++;
+	}
+	while(!big[count_big])
+	{
+		return ((char *) big[count_big]);
 		count_big++;
 	}
 	return (NULL);
