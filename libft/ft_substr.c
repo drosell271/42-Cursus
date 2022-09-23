@@ -1,39 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 15:25:44 by drosell-          #+#    #+#             */
-/*   Updated: 2022/09/23 16:47:02 by drosell-         ###   ########.fr       */
+/*   Created: 2022/09/23 15:35:08 by drosell-          #+#    #+#             */
+/*   Updated: 2022/09/23 17:10:08 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-int	ft_atoi(const char *str)
+char *ft_substr(char const *s, unsigned int start, size_t len)
 {
-	long long	num;
-	int			i;
-	int			np;
+	char	*result;
+	size_t		count;
 
-	np = 1;
-	i = 0;
-	num = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 14))
-		i++;
-	if (str[i] == '+' || str[i] == '-')
-		if (str[i++] == '-')
-			np = -1;
-	while (str[i] >= '0' && str[i] <= '9')
+	count = 0;
+	result = ft_calloc(len, sizeof(char));
+	while (count < len && s[start + count])
 	{
-		num = num * 10 + (str[i] - '0');
-		if (num * np > INT_MAX)
-			return (-1);
-		if (num * np < INT_MIN)
-			return (0);
-		i++;
+		result[count] = (char) s[start + count];
+		count++;
 	}
-	return (np * num);
+	return (result);
 }

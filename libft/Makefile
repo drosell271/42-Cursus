@@ -23,8 +23,9 @@ CFILES = 	ft_atoi.c    \
 			ft_calloc.c  \
 			ft_strdup.c	 \
 			ft_strnstr.c \
-			ft_memmove.c
-			
+			ft_memmove.c \
+			ft_substr.c
+
 HDRS = libft.h
 OBJS = ${CFILES:.c=.o}
 LIB = libft.a
