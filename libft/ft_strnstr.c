@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 08:59:54 by drosell-          #+#    #+#             */
-/*   Updated: 2022/09/23 13:46:26 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/09/23 14:04:14 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	contador;
 
+	if (!big && len == 0)
+		return (NULL);
 	if (*little == 0 || big == little)
 		return ((char *)big);
 	contador = ft_strlen(little);
