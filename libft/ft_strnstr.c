@@ -6,48 +6,24 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 08:59:54 by drosell-          #+#    #+#             */
-/*   Updated: 2022/09/21 08:59:54 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/09/23 13:46:26 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int *check_pos(const char *big, const char *little, size_t len, int *resultado)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	int	count_big;
-	int count_little;
+	size_t	contador;
 
-	count_big = 0;
-	count_little = 0;
-	while (!big[count_big])
+	if (*little == 0 || big == little)
+		return ((char *)big);
+	contador = ft_strlen(little);
+	while (*big && contador <= len--)
 	{
-		while (!little[count_little])
-		{
-			if (big[count_big + count_little] == little[count_little])
-			{
-				if (resultado[0] == -1)
-					resultado[0] = count_big;
-				count_little++;
-			}
-			break;
-		}
-		if (count_little == len)
-			resultado[1] = 1;
-		resultado[0] = -1;
-		count_big++;
+		if (!(ft_strncmp((char *)big, (char *)little, contador)))
+			return ((char *)big);
+		big++;
 	}
-	return (resultado);
-}
-
-char *ft_strnstr(const char *big, const char *little, size_t len)
-{
-	int check[2];
-
-	check[0] = -1;
-	check[1] = 0;
-	check = check_pos(big, little, len, check);
-	if (check[1] == 1)
-	{
-		while(big[check[0]])
-		
+	return (NULL);
 }
