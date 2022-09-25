@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 19:17:31 by drosell-          #+#    #+#             */
-/*   Updated: 2022/09/23 16:56:12 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/09/25 16:48:53 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 //Parte 2
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif
