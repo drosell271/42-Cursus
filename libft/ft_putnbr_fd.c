@@ -1,36 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/23 15:35:08 by drosell-          #+#    #+#             */
-/*   Updated: 2022/09/25 18:07:36 by drosell-         ###   ########.fr       */
+/*   Created: 2022/09/25 17:43:50 by drosell-          #+#    #+#             */
+/*   Updated: 2022/09/25 17:59:56 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	ft_putnbr_fd(int n, int fd)
 {
-	char	*result;
-	size_t	count;
+	char	caracter;
 
-	count = 0;
-	if (s)
+	if (n < 0)
 	{
-		if (start >= ft_strlen(s))
-			len = 0;
-		result = ft_calloc(len + 1, sizeof(char));
-		if (!result)
-			return (NULL);
-		while (count < len)
+		if (n == -2147483648)
 		{
-			result[count] = (char) s[start + count];
-			count++;
+			write(fd, "-2147483648", 11);
+			return ;
 		}
-		return (result);
+		write(fd, "-", 1);
+		n = n * -1;
 	}
-	return (NULL);
+	if (n >= 10)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		n = n % 10;
+	}
+	if (n < 10)
+	{
+		caracter = n + 48;
+		write(fd, &caracter, 1);
+	}
 }

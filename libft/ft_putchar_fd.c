@@ -1,36 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/23 15:35:08 by drosell-          #+#    #+#             */
-/*   Updated: 2022/09/25 18:07:36 by drosell-         ###   ########.fr       */
+/*   Created: 2022/09/25 17:17:33 by drosell-          #+#    #+#             */
+/*   Updated: 2022/09/25 17:33:42 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	ft_putchar_fd(char c, int fd)
 {
-	char	*result;
-	size_t	count;
-
-	count = 0;
-	if (s)
-	{
-		if (start >= ft_strlen(s))
-			len = 0;
-		result = ft_calloc(len + 1, sizeof(char));
-		if (!result)
-			return (NULL);
-		while (count < len)
-		{
-			result[count] = (char) s[start + count];
-			count++;
-		}
-		return (result);
-	}
-	return (NULL);
+	write(fd, &c, sizeof(char));
 }
