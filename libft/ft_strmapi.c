@@ -1,40 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/25 17:43:50 by drosell-          #+#    #+#             */
-/*   Updated: 2022/09/26 13:10:35 by drosell-         ###   ########.fr       */
+/*   Created: 2022/09/26 17:21:34 by drosell-          #+#    #+#             */
+/*   Updated: 2022/09/26 18:25:04 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	caracter;
+	char	*output;
+	int		i;
 
-	if (n < 0)
+	i = 0;
+	if (!f)
+		return (ft_calloc (1, sizeof(char)));
+	if (!s || !f)
+		return (NULL);
+	output = ft_calloc (ft_strlen(s) + 1, sizeof(char));
+	if (!output)
+		return (NULL);
+	while (s[i])
 	{
-		if (n == -2147483648)
-		{
-			write(fd, "-2147483648", 11);
-			return ;
-		}
-		write(fd, "-", 1);
-		n = n * -1;
+		output[i] = f(i, s[i]);
+		i++;
 	}
-	if (n >= 10)
-	{
-		ft_putnbr_fd(n / 10, fd);
-		n = n % 10;
-	}
-	if (n < 10)
-	{
-		caracter = n + 48;
-		write(fd, &caracter, 1);
-	}
+	return (output);
 }
