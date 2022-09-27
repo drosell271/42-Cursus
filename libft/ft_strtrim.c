@@ -12,30 +12,79 @@
 
 #include "libft.h"
 
-char *ft_strtrim(char const *s1, char const *set)
+int	size_calculator(char const *s1, char const *set)
 {
-	char	*output;
-	int		data[4];	//counter, size, init, last
+	int		s1_counter;
+	int		set_counter;
+	int		output_counter;
+	int		size;
 
-	ft_bzero(data, 4);
-	while(s1[data[0]])
+	s1_counter = 0;
+	set_counter = 0;
+	output_counter = 0;
+	size = 0;
+	while(s1[s1_counter])
 	{
-		if ((char) s1[data[0]] != (char) set)
-		{	
-			data[1]++;
-			data[2] = data[0];
+		while(set[set_counter])
+		{
+			if(s1[s1_counter] != set[set_counter] && set_counter == ft_strlen(set))
+				size++;
+			set_counter++;
 		}
-		if ((char) s1[data[0]] == (char)set && (char) data[2] != 0)
-			data[3] = data[0] - 1;
-		data[0]++;
+		set_counter = 0;
+		s1_counter++;
 	}
-	data[0] = 0;
-	output = ft_calloc(data[1], sizeof(char));
-	while (data[2] < data[3])
+	return (size);
+}
+
+char	*generate_output(char *output, char const s1, char const set)
+{
+	int		s1_counter;
+	int		set_counter;
+	int		output_counter;
+
+	s1_counter = 0;
+	set_counter = 0;
+	output_counter = 0;
+	while(s1[s1_counter])
 	{
-		output [data[0]] = (char) s1[data[2]];
-		data[0]++;
-		data[2]++;
+		while(set[set_counter])
+		{
+			if(s1[s1_counter] != set[set_counter] && set_counter == ft_strlen(set))
+				output[output_counter] = (char) s1[s1_counter];
+			set_counter++;
+		}
+		set_counter = 0;
+		s1_counter++;
 	}
 	return (output);
+}
+
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	char	*output;
+	int		size;
+
+	s1_counter = 0;
+	set_counter = 0;
+	output_counter = 0;
+	size = 0;
+	size = size_calculator(s1, set);
+	output = ft_calloc(size, sizeof(char));
+	return (generate_output(output, s1, set));
+}
+
+	
+
+
+	
+
+
+
+
+
+
+
+
+
 }
