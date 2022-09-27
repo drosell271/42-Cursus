@@ -6,85 +6,50 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 18:26:43 by drosell-          #+#    #+#             */
-/*   Updated: 2022/09/26 19:15:59 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/09/27 18:21:47 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	size_calculator(char const *s1, char const *set)
+char	*output_pa_recortar(char *output, int start, int end, char const *s1)
 {
-	int		s1_counter;
-	int		set_counter;
-	int		output_counter;
-	int		size;
+	int	size;
 
-	s1_counter = 0;
-	set_counter = 0;
-	output_counter = 0;
 	size = 0;
-	while(s1[s1_counter])
+	if (output)
 	{
-		while(set[set_counter])
+		while (start <= end)
 		{
-			if(s1[s1_counter] != set[set_counter] && set_counter == ft_strlen(set))
-				size++;
-			set_counter++;
+			output[size] = s1[start];
+			start++;
+			size++;
 		}
-		set_counter = 0;
-		s1_counter++;
+		return (output);
 	}
-	return (size);
-}
-
-char	*generate_output(char *output, char const s1, char const set)
-{
-	int		s1_counter;
-	int		set_counter;
-	int		output_counter;
-
-	s1_counter = 0;
-	set_counter = 0;
-	output_counter = 0;
-	while(s1[s1_counter])
-	{
-		while(set[set_counter])
-		{
-			if(s1[s1_counter] != set[set_counter] && set_counter == ft_strlen(set))
-				output[output_counter] = (char) s1[s1_counter];
-			set_counter++;
-		}
-		set_counter = 0;
-		s1_counter++;
-	}
-	return (output);
+	return (NULL);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*output;
 	int		size;
+	int		start;
+	int		end;
 
-	s1_counter = 0;
-	set_counter = 0;
-	output_counter = 0;
+	start = 0;
 	size = 0;
-	size = size_calculator(s1, set);
-	output = ft_calloc(size, sizeof(char));
-	return (generate_output(output, s1, set));
-}
-
-	
-
-
-	
-
-
-
-
-
-
-
-
-
+	if (s1 && set)
+	{
+		end = ft_strlen(s1) - 1;
+		while (s1[start] && ft_strchr(set, s1[start]))
+			start++;
+		while (end >= 0 && ft_strrchr(set, s1[end]))
+			end--;
+		if (end <= 0)
+			return (ft_strdup(""));
+		output = ft_calloc (end - start + 2, sizeof(char));
+		return (output_pa_recortar (output, start, end, s1));
+	}
+	return (NULL);
 }
