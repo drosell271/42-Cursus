@@ -5,109 +5,113 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/26 10:24:33 by drosell-          #+#    #+#             */
-/*   Updated: 2022/09/27 19:19:03 by drosell-         ###   ########.fr       */
+/*   Created: 2022/09/28 11:27:07 by drosell-          #+#    #+#             */
+/*   Updated: 2022/09/28 11:27:07 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t sepatarator_sizer(char const *s, char c)
+char	**output_x_sizer(char const *s, char c)
 {
-	size_t	size;
-	int	counter;
+	char	**output;
+	int	trim;
+	int counter;
+	int	x_size;
 
-	size = 0;
+	trim = 0;
 	counter = 0;
-	while(s[counter])
+	x_size = 0;
+	while (s[counter])
 	{
+		if ((char) s[counter] != c && trim == 0)
+		{
+			trim = 1;
+			x_size++;
+		}
 		if ((char) s[counter] == c)
-			size++;
+			trim = 0;
 		counter++;
 	}
-	return (size);
+	output = ft_calloc(x_size + 1, sizeof(char *));
+	return (output);
 }
 
-int	*sepatarator_generator(char const *s, char c, int *separator)
+char	**output_y_sizer(char const *s, char c, char **output)
 {
-	int	counter_s;
-	int	counter_separator;
+	int	s_counter;
+	int output_pos;
+	int	y_size;
 
-	counter_s = 0;
-	counter_separator = 0;
-	while(s[counter_s])
+	s_counter = 0;
+	output_pos = 0;
+	y_size = 0;
+	while (s[s_counter])
 	{
-		if ((char) s[counter_s] == c)
+		if ((char) s[s_counter] != c)
+			y_size++;
+		else if ((char) s[s_counter] == c)
 		{
-			separator[counter_separator] = counter_s;
-			counter_separator++;
+			output[output_pos] = ft_calloc(y_size + 1, sizeof(char));
+			y_size = 0;
+			output_pos++;
 		}
-		counter_s++;
+		s_counter++;
 	}
-	return (separator);
+	if (y_size != 0)
+		output[output_pos] = ft_calloc(y_size + 1, sizeof(char));
+	return (output);
 }
 
-int	output_x_sizer(int *separator)
+char **output_filler(char const *s, char c, char **output)
 {
-	size_t	size;
-	int		counter;
-	
-	counter = 1;
-	size = 0;
-	while (separator[counter])
-	{
-		if (separator[counter] - separator[counter - 1] > 1)
-			size++;
-		counter++;
-	}
-	return (size);
-}
+	int	output_x_counter;
+	int	output_y_counter;
+	int	s_counter;
 
-char **output_y_sizer(int *separator, char **output)
-{
-	int	counter_separator;
-	int counter_output;
-
-	counter_separator = 0;
-	counter_output = 0;
-	while (separator[counter_separator])
+	output_x_counter = 0;
+	output_y_counter = 0;
+	s_counter = 0;
+	while (s[s_counter])
 	{
-		if (separator[counter_separator] - separator[counter_separator - 1] > 1)
+		if ((char) s[s_counter] != c)
 		{
-			output[counter_output] = ft_calloc(separator[counter_separator] - separator[counter_separator - 1], sizeof(char));
-			counter_output++;
+			output[output_x_counter][output_y_counter] = (char) s[s_counter];
+			output_y_counter++;
 		}
-		counter_separator++;
+		else if ((char) s[s_counter] == c)
+		{
+			output_y_counter = 0;
+			output_x_counter++;
+		}
+		s_counter++;
 	}
 	return (output);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	int	*separator;
-	char **output;
-	int	*data;	//s, separator, output_x, output_y
+	char	**output;
+	int index;
+	int size;
 
-	data = ft_calloc(4,sizeof(int));
-	separator = ft_calloc(sepatarator_sizer(s, c), sizeof(int));
-	separator = sepatarator_generator(s, c, separator);
-	output = ft_calloc(output_x_sizer(separator), sizeof(char *));
-	output = output_y_sizer(separator, output);
-	while(separator[data[1] + 1])
+	index = 0;
+	if (!s)
+		return(NULL);
+	if (!c)
 	{
-		if (separator[data[1] + 1] - separator[data[1]] > 1)
+		size = ft_strlen(s);
+		output = ft_calloc(2, sizeof(char *));
+		output[0] = ft_calloc(size + 1, sizeof(char));
+		while (s[index])
 		{
-			data[0] = data[1] + 1;
-			while (data[0] <= separator[data[1] + 1] - 1)
-			{
-				output[data[2]][data[3]] = (char) s[data[0]];
-				data[0]++;
-				data[3]++;
-			}
-			data[3] = 0;
+			output[0][index] = s[index];
+			index++;
 		}
-		data[2]++;
-		data[1]++;
+		return(output);
 	}
+	output = output_x_sizer(s, c);
+	output = output_y_sizer(s, c, output);
+	output = output_filler(s, c, output);
 	return (output);
 }

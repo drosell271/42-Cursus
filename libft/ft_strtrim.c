@@ -33,12 +33,10 @@ char	*output_pa_recortar(char *output, int start, int end, char const *s1)
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*output;
-	int		size;
 	int		start;
 	int		end;
 
 	start = 0;
-	size = 0;
 	if (s1 && set)
 	{
 		end = ft_strlen(s1) - 1;
