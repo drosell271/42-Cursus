@@ -34,7 +34,11 @@ CFILES = 	ft_atoi.c    \
 			ft_itoa.c		\
 			ft_strmapi.c	\
 			ft_striteri.c	\
-			ft_strtrim.c	
+			ft_strtrim.c	\
+			ft_lstnew.c		\
+			ft_lstadd_front.c \
+			ft_lstsize.c	\
+			ft_lstlast.c
 
 HDRS = libft.h
 OBJS = ${CFILES:.c=.o}

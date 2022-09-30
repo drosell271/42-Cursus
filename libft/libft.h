@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 19:17:31 by drosell-          #+#    #+#             */
-/*   Updated: 2022/09/30 13:25:50 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/09/30 15:06:51 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,8 @@ typedef struct	s_list
 	void			*content;
 	struct s_list	*next;
 } 					t_list;
+t_list	*ft_lstnew(void *nuevo);
+void 	ft_lstadd_front(t_list **lst, t_list *new);
+int		ft_lstsize(t_list *lst);
+t_list	*ft_lstlast(t_list *lst);
 #endif
