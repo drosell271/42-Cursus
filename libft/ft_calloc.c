@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 17:47:00 by drosell-          #+#    #+#             */
-/*   Updated: 2022/09/20 18:29:21 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/09/30 12:47:54 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ void	*ft_calloc(size_t count, size_t size)
 {
 	void			*salida;
 	unsigned int	total_b;
-
+ 
 	total_b = count * size;
+	if (total_b && total_b / count != size)
+		return (NULL);
 	salida = malloc(total_b);
 	if (!salida)
 		return (NULL);

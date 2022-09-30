@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 11:27:07 by drosell-          #+#    #+#             */
-/*   Updated: 2022/09/28 11:27:07 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/09/30 12:03:14 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 char	**output_x_sizer(char const *s, char c)
 {
 	char	**output;
-	int	trim;
-	int counter;
-	int	x_size;
+	int		trim;
+	int		counter;
+	int		x_size;
 
 	trim = 0;
 	counter = 0;
@@ -40,7 +40,7 @@ char	**output_x_sizer(char const *s, char c)
 char	**output_y_sizer(char const *s, char c, char **output)
 {
 	int	s_counter;
-	int output_pos;
+	int	output_pos;
 	int	y_size;
 
 	s_counter = 0;
@@ -50,7 +50,7 @@ char	**output_y_sizer(char const *s, char c, char **output)
 	{
 		if ((char) s[s_counter] != c)
 			y_size++;
-		else if ((char) s[s_counter] == c)
+		else if ((char) s[s_counter] == c && y_size != 0)
 		{
 			output[output_pos] = ft_calloc(y_size + 1, sizeof(char));
 			y_size = 0;
@@ -63,7 +63,7 @@ char	**output_y_sizer(char const *s, char c, char **output)
 	return (output);
 }
 
-char **output_filler(char const *s, char c, char **output)
+char	**output_filler(char const *s, char c, char **output)
 {
 	int	output_x_counter;
 	int	output_y_counter;
@@ -79,7 +79,7 @@ char **output_filler(char const *s, char c, char **output)
 			output[output_x_counter][output_y_counter] = (char) s[s_counter];
 			output_y_counter++;
 		}
-		else if ((char) s[s_counter] == c)
+		if ((char) s[s_counter] == c && output_y_counter != 0)
 		{
 			output_y_counter = 0;
 			output_x_counter++;
@@ -92,25 +92,12 @@ char **output_filler(char const *s, char c, char **output)
 char	**ft_split(char const *s, char c)
 {
 	char	**output;
-	int index;
-	int size;
 
-	index = 0;
 	if (!s)
-		return(NULL);
-	if (!c)
-	{
-		size = ft_strlen(s);
-		output = ft_calloc(2, sizeof(char *));
-		output[0] = ft_calloc(size + 1, sizeof(char));
-		while (s[index])
-		{
-			output[0][index] = s[index];
-			index++;
-		}
-		return(output);
-	}
+		return (NULL);
 	output = output_x_sizer(s, c);
+	if (!output)
+		return (NULL);
 	output = output_y_sizer(s, c, output);
 	output = output_filler(s, c, output);
 	return (output);

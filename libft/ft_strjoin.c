@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 15:54:11 by drosell-          #+#    #+#             */
-/*   Updated: 2022/09/25 18:07:18 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/09/30 12:42:38 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		count_s1_output;
 	int		count_s2;
 
+	if (!s1 || !s2)
+		return (NULL);
 	total_size = 0;
 	count_s1_output = 0;
 	count_s2 = 0;
@@ -32,10 +34,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		count_s1_output++;
 	}
 	while (s2[count_s2])
-	{
-		output[count_s1_output] = (char) s2[count_s2];
-		count_s1_output++;
-		count_s2++;
-	}
+		output[count_s1_output++] = (char) s2[count_s2++];
 	return (output);
 }

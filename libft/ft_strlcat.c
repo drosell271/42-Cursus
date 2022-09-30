@@ -6,13 +6,13 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 18:14:44 by drosell-          #+#    #+#             */
-/*   Updated: 2022/09/23 14:04:58 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/09/30 12:41:57 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dest, char *src, size_t size)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
 	size_t		a;
 	int			b;
