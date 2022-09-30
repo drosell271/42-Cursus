@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 19:17:31 by drosell-          #+#    #+#             */
-/*   Updated: 2022/09/30 12:42:24 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/09/30 13:25:50 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,10 @@ char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	*ft_strtrim(char const *s1, char const *set);
-
+//Bonus
+typedef struct	s_list
+{
+	void			*content;
+	struct s_list	*next;
+} 					t_list;
 #endif

@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 15:35:08 by drosell-          #+#    #+#             */
-/*   Updated: 2022/09/30 12:56:03 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/09/30 13:18:49 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	{
 		if (start >= ft_strlen(s))
 			len = 0;
+		else if ((ft_strlen(s) - start) < len)
+			len = ft_strlen(s) - start;
 		result = ft_calloc(len + 1, sizeof(char));
 		if (!result)
 			return (NULL);
