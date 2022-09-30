@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-CFILES = 	ft_atoi.c    \
+MFILES = 	ft_atoi.c    \
 			ft_bzero.c   \
 			ft_isalnum.c \
 			ft_isascii.c \
@@ -34,33 +34,42 @@ CFILES = 	ft_atoi.c    \
 			ft_itoa.c		\
 			ft_strmapi.c	\
 			ft_striteri.c	\
-			ft_strtrim.c	\
-			ft_lstnew.c		\
+			ft_strtrim.c	
+
+BFILES =	ft_lstnew.c		\
 			ft_lstadd_front.c \
 			ft_lstsize.c	\
 			ft_lstlast.c	\
-			ft_lstadd_back.c
-
-HDRS = libft.h
-OBJS = ${CFILES:.c=.o}
-LIB = libft.a
+			ft_lstadd_back.c \
+			ft_lstdelone.c	\
+			ft_lstclear.c
+			
+MOBJS = ${MFILES:.c=.o}
+BOBJS = ${BFILES:.c=.o}
+NAME = libft.a
 RM = rm -rf
+LBUILDER = ar
+LFLAGS = -crs
 
-.PHONY: all re fclean clean
+.PHONY: all re fclean clean bclean bonus 
 
-all:	${LIB}
+all:	fclean ${NAME} bonus
 
-${LIB}:	${OBJS}
-	@ar rc ${LIB} ${OBJS}
-	@ranlib ${LIB}
+${NAME}:
+	@${CC} ${CFLAGS} -c ${MFILES}
+	ar -crs ${NAME} ${MOBJS}
 
-.c.o:
-	@${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I ${HDRS}
+bonus:
+	@${CC} -c ${CFLAGS} ${MFILES} ${BFILES}
+	${LBUILDER} ${LFLAGS} ${NAME} ${MOBJS} ${BOBJS}
 
 re:		fclean all
 
-fclean:		clean
-		@$(RM) ${LIB}
+fclean:		clean	bclean
+		@$(RM) ${NAME}
 
 clean:
-	@$(RM) $(OBJS)
+	@$(RM) $(MOBJS)
+
+bclean:
+	@$(RM) $(BOBJS)
