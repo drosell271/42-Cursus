@@ -58,7 +58,7 @@ all:	fclean ${NAME} bonus
 
 ${NAME}:
 	@${CC} ${CFLAGS} -c ${MFILES}
-	ar -crs ${NAME} ${MOBJS}
+	${LBUILDER} ${LFLAGS} ${NAME} ${MOBJS}
 
 bonus:
 	@${CC} -c ${CFLAGS} ${MFILES} ${BFILES}
