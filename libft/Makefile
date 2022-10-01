@@ -54,15 +54,13 @@ LFLAGS = -crs
 
 .PHONY: all re fclean clean bclean bonus 
 
-all:	fclean ${NAME} bonus
+all:	${NAME} bonus
 
-${NAME}:
-	@${CC} ${CFLAGS} -c ${MFILES}
-	${LBUILDER} ${LFLAGS} ${NAME} ${MOBJS}
+${NAME}: ${MOBJS}
+	@${LBUILDER} ${LFLAGS} ${NAME} ${MOBJS}
 
-bonus:
-	@${CC} -c ${CFLAGS} ${MFILES} ${BFILES}
-	${LBUILDER} ${LFLAGS} ${NAME} ${MOBJS} ${BOBJS}
+bonus: ${MOBJS} ${BOBJS}
+	@${LBUILDER} ${LFLAGS} ${NAME} ${MOBJS} ${BOBJS}
 
 re:		fclean all
 
