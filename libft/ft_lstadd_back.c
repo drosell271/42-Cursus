@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 16:39:07 by drosell-          #+#    #+#             */
-/*   Updated: 2022/10/01 17:17:12 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/10/01 17:23:01 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*temp;
-	
 	
 	if (lst && new)
 	{
