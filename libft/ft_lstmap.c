@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/30 16:39:07 by drosell-          #+#    #+#             */
-/*   Updated: 2022/10/01 18:58:57 by drosell-         ###   ########.fr       */
+/*   Created: 2022/10/01 19:02:02 by drosell-          #+#    #+#             */
+/*   Updated: 2022/10/01 19:02:11 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*temp;
+	t_list	*new_lst;
+	void	*new_content;
 
-	if (lst && new)
+	new_lst = NULL;
+	while (lst)
 	{
-		temp = lst[0];
-		if (temp)
+		new_content = f(lst->content);
+		ft_lstadd_back(&new_lst, ft_lstnew(new_content));
+		if (!new_lst)
 		{
-			while (temp->next)
-				temp = temp->next;
-			temp->next = new;
+			ft_lstclear(&new_lst, del);
 		}
-		else
-			lst[0] = new;
+		lst = lst->next;
 	}
+	return (new_lst);
 }
-
-	/*if (!lst)
-		return ;
-	if (*lst)
-		ft_lstlast(*lst)->next = new;
-	else
-		*lst = new; 
-	CODIGO DE PROS*/
