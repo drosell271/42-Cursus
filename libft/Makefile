@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-MFILES = 	ft_atoi.c    \
+MFILES = 	ft_atoi.c \
 			ft_bzero.c   \
 			ft_isalnum.c \
 			ft_isascii.c \
@@ -43,7 +43,7 @@ BFILES =	ft_lstnew.c		\
 			ft_lstadd_back.c \
 			ft_lstdelone.c	\
 			ft_lstclear.c	\
-			ft_lstiter.c	
+			ft_lstiter.c
 			
 MOBJS = ${MFILES:.c=.o}
 BOBJS = ${BFILES:.c=.o}
