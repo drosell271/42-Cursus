@@ -42,7 +42,8 @@ BFILES =	ft_lstnew.c		\
 			ft_lstlast.c	\
 			ft_lstadd_back.c \
 			ft_lstdelone.c	\
-			ft_lstclear.c
+			ft_lstclear.c	\
+			ft_lstiter.c	
 			
 MOBJS = ${MFILES:.c=.o}
 BOBJS = ${BFILES:.c=.o}
