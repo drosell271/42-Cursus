@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/30 16:39:07 by drosell-          #+#    #+#             */
-/*   Updated: 2022/10/01 18:58:57 by drosell-         ###   ########.fr       */
+/*   Created: 2022/09/30 13:27:07 by drosell-          #+#    #+#             */
+/*   Updated: 2022/10/02 16:22:29 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+t_list	*ft_lstnew(void *nuevo)
 {
-	t_list	*temp;
+	t_list	*output;
 
-	if (lst && new)
-	{
-		temp = lst[0];
-		if (temp)
-		{
-			while (temp->next)
-				temp = temp->next;
-			temp->next = new;
-		}
-		else
-			lst[0] = new;
-	}
+	output = ft_calloc(1, sizeof(t_list));
+	if (!output)
+		return (NULL);
+	(*output).content = nuevo;
+	(*output).next = NULL;
+	return (output);
 }
-
-	/*if (!lst)
-		return ;
-	if (*lst)
-		ft_lstlast(*lst)->next = new;
-	else
-		*lst = new; 
-	CODIGO DE PROS*/
