@@ -62,28 +62,42 @@ AR = ar
 ARFLAGS = -rcs
 RM = rm
 RMFLAGS = -f
+COLOUR_RED=\033[0;31m
+COLOUR_GREEN=\033[0;32m
+COLOUR_END=\033[0m
+OBL_MSG = Compilada la parte obligatoria
+BONUS_MSG = Compiladas las dos partes
+CLN_MSG = Clean finalizado
+FCLN_MSG = Fclean finalizado
 
 ifdef WITH_BONUS
-	TOTAL_OBJS = $(OBJS) $(OBJS_B)
+	TOTAL_OBJS = $(OBJS) $(OBJS_B) 
+	MSG = $(BONUS_MSG)
 else
 	TOTAL_OBJS = $(OBJS)
+	MSG = $(OBL_MSG)
 endif
+
 
 all: $(NAME)
 
 clean:
 	@$(RM) $(RMFLAGS) -f $(OBJS) $(OBJS_B)
+	@echo "$(COLOUR_RED)$(CLN_MSG)$(COLOUR_END)"
 
-fclean: clean
+fclean:
+	@$(RM) $(RMFLAGS) -f $(OBJS) $(OBJS_B)
 	@$(RM) $(RMFLAGS) $(NAME)
+	@echo "$(COLOUR_RED)$(FCLN_MSG)$(COLOUR_END)"
 
 re: fclean all
 
-bonus :
-	@make WITH_BONUS=1
+bonus:
+	@make --no-print-directory WITH_BONUS=1
 
 $(NAME): $(TOTAL_OBJS)
 	@$(AR) $(ARFLAGS) $@ $^
+	@echo "$(COLOUR_GREEN)$(MSG)$(COLOUR_END)"
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c $<
