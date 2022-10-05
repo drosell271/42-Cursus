@@ -12,7 +12,12 @@
 
 #include "get_next_line.h"
 
-void	get_next_line()
+char	*get_next_line(int fd)
 {
 
+}
+
+int		check_error(int fd)
+{
+	
 }

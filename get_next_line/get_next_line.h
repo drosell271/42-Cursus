@@ -17,9 +17,11 @@
 # include <limits.h>
 
 //get_next_line
-
+char	*get_next_line(int fd);
+int		check_error(int fd);
 
 //get_next_line_utils
-
+void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t count, size_t size);
 
 #endif
