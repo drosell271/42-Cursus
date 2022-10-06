@@ -12,6 +12,11 @@
 
 #include "get_next_line.h"
 
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, sizeof(char));
+}
+
 void	ft_bzero(void *s, size_t n)
 {
 	size_t	count;
@@ -38,4 +43,3 @@ void	*ft_calloc(size_t count, size_t size)
 	ft_bzero(salida, total_b);
 	return (salida);
 }
-
