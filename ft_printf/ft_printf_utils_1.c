@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   ft_printf_utils_1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 16:57:33 by drosell-          #+#    #+#             */
-/*   Updated: 2022/10/07 19:01:15 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/10/07 19:36:47 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,25 @@ int mode_u(unsigned int n , int output)
 		caracter = n + 48;
 		output += write(1, &caracter, 1);
 	}
+	return (output);
+}
+
+
+int	mode_x(int n , int output, char *base)
+{	
+	long	intermedio;
+	long	base_size;
+
+	base_size = 16;
+	if (n < 0)
+		output += write(1, "-", 1);
+	intermedio = (unsigned int) n;
+	if (intermedio >= base_size)
+	{
+		output = mode_x(intermedio / base_size, output, base);
+		intermedio = intermedio % base_size;
+	}
+	if (intermedio < 16)
+		output += write(1, &base[intermedio % base_size], 1);
 	return (output);
 }
