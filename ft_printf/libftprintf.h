@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 16:43:46 by drosell-          #+#    #+#             */
-/*   Updated: 2022/10/07 19:41:29 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/10/07 19:55:24 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ int	mode_x(int n , int output, char *base);
 //ft_printf_utils_2.c
 int	mode_X(int n , int output, char *base);
 int	mode_percent();
-
+int	mode_p(int num , int output, char *base);
 #endif
