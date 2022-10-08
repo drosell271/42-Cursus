@@ -6,11 +6,11 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 14:12:11 by drosell-          #+#    #+#             */
-/*   Updated: 2022/10/08 13:41:33 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/10/08 17:04:30 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	select_mode(char input_2, va_list ptr)
 {
@@ -59,35 +59,10 @@ int	ft_printf(const char *input, ...)
 			total_print += (write(1, &input[c_input], 1));
 		}
 		if ((char) input[c_input] == '%' && (char) input[c_input + 1] == '%')
-			c_input += 2;
+			c_input++;
 		else
 			c_input++;
 	}
 	va_end (ptr);
 	return (total_print);
 }
-
-/*int	main()
-{
-	int var1;
-	int var2;
-	int x = 50;
-
-	var1 = printf("real: hola %p adios\n", &x);
-	var2 = ft_printf("fake: hola %p adios\n", &x);
-	printf("%d\n", var1);
-	printf("%d\n", var2);
-	return (0);
-}*/
-
-/*int main()
-{
-	int n = 5;
-	int *p_n;
-
-	p_n = &n;
-	printf("Numero: %i\n", *p_n);
-
-	printf("Direccion: %p", p_n);
-	return 0;
-}*/

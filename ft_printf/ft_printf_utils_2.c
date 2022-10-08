@@ -6,11 +6,11 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 19:36:05 by drosell-          #+#    #+#             */
-/*   Updated: 2022/10/08 13:42:23 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/10/08 16:58:36 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	mode_xx(int n, int output, char *base)
 {	
@@ -18,8 +18,6 @@ int	mode_xx(int n, int output, char *base)
 	long	base_size;
 
 	base_size = 16;
-	if (n < 0)
-		output += write(1, "-", 1);
 	intermedio = (unsigned int) n;
 	if (intermedio >= base_size)
 	{

@@ -6,11 +6,11 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 16:57:33 by drosell-          #+#    #+#             */
-/*   Updated: 2022/10/08 13:40:34 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/10/08 16:58:30 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	mode_c(va_list ptr)
 {
@@ -26,6 +26,8 @@ int	mode_s(va_list ptr)
 	int		counter;
 
 	input = va_arg (ptr, char *);
+	if (!input)
+		return (write(1, "(null)", 6));
 	counter = 0;
 	while (input[counter])
 	{
