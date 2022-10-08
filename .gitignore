@@ -3,6 +3,7 @@
 
 test.c
 a.out
+*.o
 
 libft-war-machine/
 libftTester/
