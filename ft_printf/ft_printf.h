@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 16:43:46 by drosell-          #+#    #+#             */
-/*   Updated: 2022/10/08 18:54:37 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/10/08 19:44:20 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 //ft_printf.c
 int					ft_printf(const char *input, ...);
 int					select_mode(char input_2, va_list ptr);
+int					ok_mode(char input_1, char *flags);
 
 //ft_printf_utils_1.c
 int					mode_c(va_list ptr);

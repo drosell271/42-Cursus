@@ -6,11 +6,25 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 14:12:11 by drosell-          #+#    #+#             */
-/*   Updated: 2022/10/08 18:55:16 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/10/08 19:48:23 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	ok_mode(char input_1, char *flags)
+{
+	int		counter;
+
+	counter = 0;
+	while (flags[counter])
+	{
+		if (input_1 == flags[counter])
+			return (0);
+		counter++;
+	}
+	return (-1);
+}
 
 int	select_mode(char input_2, va_list ptr)
 {
@@ -50,18 +64,16 @@ int	ft_printf(const char *input, ...)
 	while ((char) input[c_input])
 	{
 		if ((char) input[c_input] == '%')
-		{
-			total_print += select_mode((char) input[c_input + 1], ptr);
-			c_input++;
+		{	
+			if (ok_mode((char) input[c_input + 1], "cspdiucxX%") == 0)
+			{
+				total_print += select_mode((char) input[c_input + 1], ptr);
+				c_input++;
+			}
 		}
 		else
-		{
 			total_print += (write(1, &input[c_input], 1));
-		}
-		if ((char) input[c_input] == '%' && (char) input[c_input + 1] == '%')
-			c_input++;
-		else
-			c_input++;
+		c_input++;
 	}
 	va_end (ptr);
 	return (total_print);
