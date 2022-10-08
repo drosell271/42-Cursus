@@ -4,6 +4,7 @@
 test.c
 a.out
 *.o
+*.txt
 
 libft-war-machine/
 libftTester/
