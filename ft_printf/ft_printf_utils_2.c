@@ -6,13 +6,13 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 19:36:05 by drosell-          #+#    #+#             */
-/*   Updated: 2022/10/07 20:00:26 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/10/08 13:42:23 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	mode_X(int n , int output, char *base)
+int	mode_xx(int n, int output, char *base)
 {	
 	long	intermedio;
 	long	base_size;
@@ -23,7 +23,7 @@ int	mode_X(int n , int output, char *base)
 	intermedio = (unsigned int) n;
 	if (intermedio >= base_size)
 	{
-		output = mode_x(intermedio / base_size, output, base);
+		output = mode_xx(intermedio / base_size, output, base);
 		intermedio = intermedio % base_size;
 	}
 	if (intermedio < 16)
@@ -31,25 +31,21 @@ int	mode_X(int n , int output, char *base)
 	return (output);
 }
 
-int	mode_percent()
+int	mode_percent(void)
 {
 	return (write(1, "%", 1));
 }
 
-int	mode_p(int num , int output, char *base)
+unsigned long long	mode_p(unsigned long long n, int output, char *base)
 {	
-	long	intermedio;
-	long	base_size;
-	int		n;
+	unsigned long long	intermedio;
+	unsigned long long	base_size;
 
-	n = &num;
 	base_size = 16;
-	if (n < 0)
-		output += write(1, "-", 1);
-	intermedio = (unsigned int) n;
+	intermedio = (unsigned long long) n;
 	if (intermedio >= base_size)
 	{
-		output = mode_x(intermedio / base_size, output, base);
+		output = mode_p(intermedio / base_size, output, base);
 		intermedio = intermedio % base_size;
 	}
 	if (intermedio < 16)
