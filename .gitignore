@@ -3,5 +3,6 @@
 
 test.c
 a.out
+*.a
 *.o
 *.txt

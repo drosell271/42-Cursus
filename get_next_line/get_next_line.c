@@ -53,10 +53,12 @@ char	*get_next_line(int fd)
 			if (temp[counter] == '\n')
 				break ;
 			if (counter == BUFFER_SIZE)
-				push_to_output(temp, output);
+				printf("Mas pequeño que buffer");
 			counter++;
 		}
-		push_to_output(temp, output);
+		output = ft_calloc(counter + 1,sizeof(char));
+		ft_memcpy(output, temp, ft_strlen(temp));
+		free(temp);
 		return (output);
 	}
 	free(output);
