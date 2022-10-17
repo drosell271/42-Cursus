@@ -12,57 +12,66 @@
 
 #include "get_next_line.h"
 
-int	check_fd(int fd)
-{
-	if (fd > 2)
-		return (1);
-	return (0);
-}
 
-char	*resize(char *input, int add_size)
-{
-	char	*output;
-	
-	output = ft_calloc((ft_strlen(input) + add_size), sizeof(char));
-	ft_memcpy(output, input, ft_strlen(input));
-	free (input);
-	return (output);
-}
 
-char	*push_to_output(char *input, char *output)
+char	*insert(char *buffer,char *output)
 {
-	output = resize(output, ft_strlen(input));
-	return (ft_memcpy(output, input, ft_strlen(input)));
+	int		size;
+	char	*new_output;
+
+	size = ft_strlen(buffer);
+	if (output != NULL)
+	{
+		new_output = ft_calloc(ft_strlen(output) + size, sizeof(char));
+		printf("E: %s\n", buffer);
+		new_output = ft_strlcat(output, buffer, size);
+	}
+	else
+	{
+		(void) output;
+		new_output = ft_calloc(size + 1, sizeof(char));
+		ft_memcpy(new_output, buffer, size);
+		printf("F: %s\n", output);
+	}
+	printf("G\n");
+	return (new_output);
 }
 
 char	*get_next_line(int fd)
 {
+	char	*buffer;
 	char	*output;
-	char	*temp;
-	int		counter;
-
-	temp = ft_calloc(BUFFER_SIZE, sizeof(char));
-	output = ft_calloc(1, sizeof(char));
+	char	character;
+	long	counter;
+	
 	counter = 1;
-	if (check_fd(fd) == 1)
+	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	read(fd, &character, 1);
+	buffer[0] = character;
+	//printf("A\n");
+	while(character != '\0')
 	{
-		read(fd, &temp[0], 1);
-		while (1)
+		read(fd, &character, 1);
+		buffer[counter] = character;
+		if (counter == BUFFER_SIZE)
 		{
-			read(fd, &temp[counter], 1);
-			if (temp[counter] == '\n')
-				break ;
-			if (counter == BUFFER_SIZE)
-				printf("Mas pequeño que buffer");
-			counter++;
+			printf("C\n");
+			output = insert(buffer, output);
+			ft_bzero(buffer, ft_strlen(buffer));
+			counter = 0;
 		}
-		output = ft_calloc(counter + 1,sizeof(char));
-		ft_memcpy(output, temp, ft_strlen(temp));
-		free(temp);
-		return (output);
+		if (character == '\n')
+		{
+			printf("D\n");
+			output = insert(buffer, output);
+			break;
+		}
+		printf("B: %ld\n", counter);
+		counter++;
 	}
-	free(output);
-	return (NULL);
+	//printf("H\n");
+	free(buffer);
+	return(output);
 }
 
 
