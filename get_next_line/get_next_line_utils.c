@@ -37,7 +37,7 @@ size_t	ft_strlen(const char *s)
 	return (c);
 }
 
-char	*ft_strlcat(char *dest, const char *src, size_t size)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
 	size_t		a;
 	int			b;
@@ -53,14 +53,14 @@ char	*ft_strlcat(char *dest, const char *src, size_t size)
 	while (src[b] != '\0')
 		b++;
 	if (size <= a)
-		return (dest);
+		return (b + size);
 	while (src[c] != '\0' && (a + c) < (size - 1))
 	{
 		dest[a + c] = src[c];
 		c++;
 	}
 	dest[a + c] = '\0';
-	return (dest);
+	return (b + a);
 }
 
 void	ft_bzero(void *s, int n)

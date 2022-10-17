@@ -22,18 +22,17 @@ char	*insert(char *buffer,char *output)
 	size = ft_strlen(buffer);
 	if (output != NULL)
 	{
-		new_output = ft_calloc(ft_strlen(output) + size, sizeof(char));
-		printf("E: %s\n", buffer);
-		new_output = ft_strlcat(output, buffer, size);
+		new_output = ft_calloc(size + ft_strlen(output), sizeof(char));
+		ft_memcpy(new_output, output, ft_strlen(output));
+		free(output);
+		ft_strlcat(new_output, buffer, size + ft_strlen(new_output));
 	}
 	else
 	{
 		(void) output;
-		new_output = ft_calloc(size + 1, sizeof(char));
+		new_output = ft_calloc(size, sizeof(char));
 		ft_memcpy(new_output, buffer, size);
-		printf("F: %s\n", output);
 	}
-	printf("G\n");
 	return (new_output);
 }
 
@@ -48,28 +47,22 @@ char	*get_next_line(int fd)
 	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	read(fd, &character, 1);
 	buffer[0] = character;
-	//printf("A\n");
-	while(character != '\0')
+	while(character != '\0' || character != -1)
 	{
 		read(fd, &character, 1);
 		buffer[counter] = character;
 		if (counter == BUFFER_SIZE)
 		{
-			printf("C\n");
 			output = insert(buffer, output);
-			ft_bzero(buffer, ft_strlen(buffer));
-			counter = 0;
+			counter = -1;
 		}
 		if (character == '\n')
 		{
-			printf("D\n");
 			output = insert(buffer, output);
 			break;
 		}
-		printf("B: %ld\n", counter);
 		counter++;
 	}
-	//printf("H\n");
 	free(buffer);
 	return(output);
 }

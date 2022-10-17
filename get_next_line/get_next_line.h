@@ -12,7 +12,7 @@
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFFER_SIZE	5
+# define BUFFER_SIZE	40
 # include	<stdlib.h>
 # include	<unistd.h>
 # include	<limits.h>
@@ -29,7 +29,7 @@ char	*get_next_line(int fd);
 //get_next_line_utils.c
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 size_t	ft_strlen(const char *s);
-char	*ft_strlcat(char *dest, const char *src, size_t size);
+size_t	ft_strlcat(char *dest, const char *src, size_t size);
 void	ft_bzero(void *s, int n);
 void	*ft_calloc(size_t count, size_t size);
 
