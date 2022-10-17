@@ -12,7 +12,7 @@
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFFER_SIZE	40
+# define BUFFER_SIZE
 # include	<stdlib.h>
 # include	<unistd.h>
 # include	<limits.h>
@@ -23,7 +23,8 @@
 # include	<stdio.h>
 
 //get_next_line.c
-char	*insert(char *buffer,char *output);
+char	*insert(char *buffer, char *output);
+char	*intermedio(char *output, char *buffer, char character, int fd);
 char	*get_next_line(int fd);
 
 //get_next_line_utils.c
