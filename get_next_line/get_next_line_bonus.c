@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 10:23:42 by drosell-          #+#    #+#             */
-/*   Updated: 2022/10/26 17:52:15 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/10/26 17:54:40 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*changer(char *input_1, char *input_2)
 {
@@ -101,25 +101,25 @@ char	*cleaner(char *text)
 
 char	*get_next_line(int fd)
 {
-	static char	*text;
+	static char	*text[1024];
 	char		*line;
 
 	line = NULL;
 	if (read(fd, 0, 0) < 0)
 	{
-		if (text != NULL)
+		if (text[fd] != NULL)
 		{
-			free(text);
-			text = NULL;
+			free(text[fd]);
+			text[fd] = NULL;
 		}
 		return (NULL);
 	}
 	if (fd < 0 || BUFFER_SIZE < 0)
 		return (NULL);
-	text = reader(fd, text);
-	if (!text)
+	text[fd] = reader(fd, text[fd]);
+	if (!text[fd])
 		return (NULL);
-	line = new_line(text);
-	text = cleaner(text);
+	line = new_line(text[fd]);
+	text[fd] = cleaner(text[fd]);
 	return (line);
 }
