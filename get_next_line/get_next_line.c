@@ -6,71 +6,122 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 10:23:42 by drosell-          #+#    #+#             */
-/*   Updated: 2022/10/14 12:38:31 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/10/26 16:51:22 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*insert(char *buffer, char *output)
+char	*changer(char *input_1, char *input_2)
 {
-	int		buffer_size;
-	int		output_size;
-	char	*new_output;
+	char	*output;
 
-	buffer_size = ft_strlen(buffer);
-	output_size = ft_strlen(output);
-	if (output != NULL)
-	{
-		new_output = ft_calloc(buffer_size + output_size, sizeof(char));
-		ft_memcpy(new_output, output, output_size);
-		ft_strlcat(new_output, buffer, buffer_size + output_size);
-	}
-	else
-	{
-		(void)output;
-		new_output = ft_calloc(buffer_size, sizeof(char));
-		ft_memcpy(new_output, buffer, buffer_size);
-	}
-	return (new_output);
+	output = ft_strjoin(input_1, input_2);
+	free(input_1);
+	return (output);
 }
 
-char	*intermedio(char *output, char *buffer, char character, int fd)
+static char	*reader(int fd, char *input)
 {
-	int	counter;
+	int		readed;
+	char	*temp;
 
-	counter = 1;
-	while (character)
+	if (input == NULL)
+		input = ft_calloc(1, 1);
+	temp = ft_calloc(BUFFER_SIZE +1, sizeof(char));
+	if (!temp)
+		return (NULL);
+	readed = 1;
+	while (readed > 0)
 	{
-		read(fd, &character, 1);
-		buffer[counter] = character;
-		if (counter + 1 == BUFFER_SIZE)
+		readed = read(fd, temp, BUFFER_SIZE);
+		if (readed == -1)
 		{
-			output = insert(buffer, output);
-			ft_bzero(buffer, BUFFER_SIZE);
-			counter = -1;
+			free(temp);
+			return (NULL);
 		}
-		if (character == '\n')
-		{
-			output = insert(buffer, output);
+		temp[readed] = 0;
+		input = changer(input, temp);
+		if (ft_strchr(input, '\n'))
 			break ;
-		}
-		counter++;
 	}
-	return (output);
+	free(temp);
+	return (input);
+}
+
+char	*new_line(char *input)
+{
+	char	*temp;
+	int		count;
+
+	count= 0;
+	if (!input[count])
+		return (NULL);
+	while (input[count] && input[count] != '\n')
+		count++;
+	temp = NULL;
+	temp = (char *)ft_calloc(count + 2, sizeof(char));
+	count = 0;
+	while (input[count] && input[count] != '\n')
+	{
+		temp[count] = input[count];
+		count++;
+	}
+	if (input[count] && input[count] == '\n')
+		temp[count] = '\n';
+	return (temp);
+}
+
+char	*cleaner(char *text)
+{
+	char	*aux;
+	int		i;
+	int		a;
+
+	i = 0;
+	while (text[i] && text[i] != '\n')
+		i++;
+	if (!text[i])
+	{
+		free(text);
+		return (NULL);
+	}
+	aux = NULL;
+	if (text[i] == '\n')
+		i++;
+	aux = (char *)ft_calloc((ft_strlen(text) - i) + 1, sizeof(char));
+	if (!aux)
+		return (NULL);
+	a = 0;
+	while (text[i])
+		aux[a++] = text[i++];
+	free(text);
+	return (aux);
 }
 
 char	*get_next_line(int fd)
 {
-	char	*buffer;
-	char	*output;
-	char	character;
+	static char	*text;
+	char		*line;
 
-	output = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
-	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
-	read(fd, &character, 1);
-	buffer[0] = character;
-	output = intermedio(output, buffer, character, fd);
-	free (buffer);
-	return (output);
+	line = NULL;
+	if (read(fd, 0, 0) < 0)
+	{
+		if (text != NULL)
+		{
+			free(text);
+			text = NULL;
+		}
+		return (NULL);
+	}
+	if (fd < 0 || BUFFER_SIZE < 0)
+		return (NULL);
+
+	text = reader(fd, text);
+	if (!text)
+		return (NULL);
+	line = new_line(text);
+	text = cleaner(text);
+	return (line);
 }
+

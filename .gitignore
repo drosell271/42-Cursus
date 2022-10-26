@@ -1,8 +1,6 @@
 .DS_Store
 .vscode/
 
-test.c
 a.out
 *.a
 *.o
-*.txt

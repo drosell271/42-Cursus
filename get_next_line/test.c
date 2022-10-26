@@ -10,11 +10,9 @@ int	main()
 
 	counter = 0;
 	fd = open("test.txt", O_RDONLY);
-	while (counter != 2)
-	{
+	printf("%s\n", get_next_line(fd));
 		printf("%s\n", get_next_line(fd));
-		counter++;
-	}
+	counter++;
 	close(fd);
 	return (0);
 }
