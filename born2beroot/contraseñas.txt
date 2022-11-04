@@ -1,1 +1,3 @@
 Disco: JaviGuapo
+drosell: Javiguapo01
+root: Javiguapo01
