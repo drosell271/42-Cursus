@@ -1,3 +1,5 @@
+# Born2BeRoot
+
 ## Como funciona una máquina virual
 Una máquina virtual es un software que simula un sistema de computación y puede ejecutar programas como si fuese una computadora real, 
 Una característica esencial de las máquinas virtuales es que los procesos que ejecutan están limitados por los recursos y abstracciones proporcionados por ellas. Estos procesos no pueden escaparse de esta "computadora virtual".
@@ -32,7 +34,7 @@ Es el módulo de seguridad de linux que daa permisos dependiendo de rutas
 
 <br>
 
-## Contraseñas y usuarios
+## Contraseñas
 Politica de contraseñas: `sudo nano /etc/pam.d/common-password`
 
 Ver tiempos de las contraseñas: `chage -l //user`
@@ -41,11 +43,14 @@ Cambiar tiempos de las contraseñas: `sudo nano /etc/login.defs`
 
 Cambiar tiempos de las contraseñas: `sudo nano /etc/login.defs`
 
-Grupos: `groups (del ususario que lo ejecuta | necesita reinicio)`
+<br>
 
+## Usuarios y grupos
 Nuevo usuario: `adduser //Nombre de usuario a crear`
 
 Nuevo grupo: `groupadd //Nombre de grupo`
+
+Grupos: `groups (del ususario que lo ejecuta | necesita reinicio)`
 
 Añadir usuario a grupo: `usermod -aG //Grupo //User`
 
