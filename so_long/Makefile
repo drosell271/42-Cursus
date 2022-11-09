@@ -6,19 +6,14 @@
 #    By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/02 16:29:08 by drosell-          #+#    #+#              #
-#    Updated: 2022/11/09 14:37:16 by drosell-         ###   ########.fr        #
+#    Updated: 2022/11/09 17:16:11 by drosell-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-SRCS =	ft_printf/ft_printf.c \
-		ft_printf/ft_printf_utils_1.c \
-		ft_printf/ft_printf_utils_2.c \
-		get_next_line/get_next_line.c \
-		get_next_line/get_next_line_utils.c \
-		map_to_array.c \
+SRCS =	map_to_array.c \
 		so_long.c \
 		so_long_utils.c \
 		main.c
