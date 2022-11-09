@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 10:21:56 by drosell-          #+#    #+#             */
-/*   Updated: 2022/10/26 17:55:42 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/11/09 15:33:54 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <fcntl.h>
 
 char	*get_next_line(int fd);
 void	*ft_calloc(size_t count, size_t size);

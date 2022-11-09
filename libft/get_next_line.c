@@ -6,11 +6,11 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 10:23:42 by drosell-          #+#    #+#             */
-/*   Updated: 2022/10/26 17:52:15 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/11/09 15:47:49 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 char	*changer(char *input_1, char *input_2)
 {
@@ -21,7 +21,7 @@ char	*changer(char *input_1, char *input_2)
 	return (output);
 }
 
-static char	*reader(int fd, char *input)
+char	*reader(int fd, char *input)
 {
 	int		readed;
 	char	*temp;

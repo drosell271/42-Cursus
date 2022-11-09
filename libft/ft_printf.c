@@ -6,11 +6,11 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 14:12:11 by drosell-          #+#    #+#             */
-/*   Updated: 2022/10/08 19:48:23 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/11/09 15:02:24 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 int	ok_mode(char input_1, char *flags)
 {

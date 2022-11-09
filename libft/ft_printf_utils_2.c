@@ -6,11 +6,11 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 19:36:05 by drosell-          #+#    #+#             */
-/*   Updated: 2022/10/08 16:58:36 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/11/09 15:02:20 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 int	mode_xx(int n, int output, char *base)
 {	

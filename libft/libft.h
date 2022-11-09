@@ -6,17 +6,29 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 19:17:31 by drosell-          #+#    #+#             */
-/*   Updated: 2022/10/02 18:38:51 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/11/09 15:48:29 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
+
+# include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+# include <stdarg.h>
 
-//Parte 1
+
+/*
+PARTES OBLIGATORIAS
+*/
+
+//LIBFT
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
@@ -40,7 +52,6 @@ char	*ft_strnstr(const char *big, const char *little, size_t len);
 char	*ft_strrchr(const char *s, int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
-//Parte 2
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 void	ft_putchar_fd(char c, int fd);
@@ -52,7 +63,32 @@ char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	*ft_strtrim(char const *s1, char const *set);
-//Bonus
+
+//FT_PRINTF
+int					ft_printf(const char *input, ...);
+int					select_mode(char input_2, va_list ptr);
+int					ok_mode(char input_1, char *flags);
+int					mode_c(va_list ptr);
+int					mode_s(va_list ptr);
+int					mode_d_i(int n, int output);
+int					mode_u(unsigned int n, int output);
+int					mode_xx(int n, int output, char *base);
+int					mode_percent(void);
+unsigned long long	mode_p(unsigned long long n, int output, char *base);
+
+//GET_NEXT_LINE
+char	*get_next_line(int fd);
+char	*changer(char *input_1, char *input_2);
+char	*reader(int fd, char *input);
+char	*new_line(char *input);
+char	*cleaner(char *text);
+
+
+/*
+PARTES BONUS
+*/
+
+//LIBFT
 typedef struct s_list
 {
 	void			*content;
@@ -68,5 +104,8 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+//GET_NEXT_LINE_BONUS
+char		*get_next_line_bonus(int fd);
 
 #endif

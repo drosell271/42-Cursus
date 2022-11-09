@@ -6,7 +6,7 @@
 #    By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/02 16:29:08 by drosell-          #+#    #+#              #
-#    Updated: 2022/10/02 18:38:53 by drosell-         ###   ########.fr        #
+#    Updated: 2022/11/09 15:43:17 by drosell-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,12 @@ SRCS =	ft_atoi.c \
 		ft_itoa.c \
 		ft_strmapi.c \
 		ft_striteri.c \
-		ft_split.c
+		ft_split.c \
+		ft_printf.c \
+		ft_printf_utils_1.c \
+		ft_printf_utils_2.c \
+		get_next_line.c \
+		get_next_line_bonus.c 
 SRCS_B =	ft_lstnew_bonus.c \
 			ft_lstadd_front_bonus.c \
 			ft_lstsize_bonus.c \
