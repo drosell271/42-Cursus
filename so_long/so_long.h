@@ -31,6 +31,7 @@ char **so_long(char *argv);
 char	**file_2_map(char *argv);
 int 	y_size_calculator(char *argv);
 int		x_size_calculator(char *argv);
-void	**map_generator(int x_size, int y_size, char **map);
+void	**map_generator(int y_size, char **map);
+void	map_filler(char **map, char *argv);
 
 #endif

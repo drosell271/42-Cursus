@@ -41,10 +41,8 @@ int	x_size_calculator(char *argv)
 	x_size = 1;
 
 	fd = open(argv, O_RDONLY);
-
 	if (fd == -1)
 		return (-1);
-	
 	check_line = get_next_line(fd);
 	x_size = ft_strlen(check_line);
 	while (check_line)
@@ -60,18 +58,36 @@ int	x_size_calculator(char *argv)
 	return (x_size);	
 }
 
-void	**map_generator(int x_size, int y_size, char **map)
+void	**map_generator(int y_size, char **map)
 {
-	int counter;
+	//int counter;
 
-	map = ft_calloc(x_size, sizeof(char *));
+	map = ft_calloc(y_size, sizeof(char *));
+	/*
 	counter = 0;
 	while (counter <= x_size)
 	{
-		map[counter] = ft_calloc(y_size, sizeof(char));
+		map[counter] = ft_calloc(x_size, sizeof(char));
 		counter++;
- 	}
-		//Falta comprobar que se ha creado bien el calloc
+ 	}*/
+}
+
+void	map_filler(char **map, char *argv)
+{
+	int		fd;
+	int		y_counter;
+	char	*line;
+
+	y_counter = 0;
+	fd = open(argv, O_RDONLY);
+	line = get_next_line(fd);
+	while (line)
+	{
+		map[y_counter] = line;
+		y_counter++;
+		line = get_next_line(fd);
+	}
+	close (fd);
 }
 
 char	**file_2_map(char *argv)
@@ -84,8 +100,11 @@ char	**file_2_map(char *argv)
 	y_size = y_size_calculator(argv);
 	if (y_size == -1 || x_size == -1)
 		return (NULL);
-	map_generator(x_size, y_size, map);
+	map_generator(y_size, map);
 	//Falta rellenar el map
-	map_filler()
-
+	map_filler(map, argv);
+	//Falta comprobar el map
+	/*if (map_checker(map, y_size) != 0);
+		return (NULL);*/
+	return (map);
 }
