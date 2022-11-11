@@ -64,9 +64,8 @@ Ver particiones: `df -h` o `lsblk`
 <br>
 
 ## Sudo
-Añadir a usuario: `groupadd //Usuario`
 
-Verificar log: abrir archivo en /var/log/sudo/
+Verificar log: `sudo nano /var/log/sudo/sudo.log`
 
 <br>
 
