@@ -30,7 +30,7 @@ Aptitude:
 <br>
 
 ## APPArmor
-Es el módulo de seguridad de linux que daa permisos dependiendo de rutas
+Es el módulo de seguridad de linux que da permisos dependiendo de rutas
 
 <br>
 
@@ -38,8 +38,6 @@ Es el módulo de seguridad de linux que daa permisos dependiendo de rutas
 Politica de contraseñas: `sudo nano /etc/pam.d/common-password`
 
 Ver tiempos de las contraseñas: `chage -l //user`
-
-Cambiar tiempos de las contraseñas: `sudo nano /etc/login.defs`
 
 Cambiar tiempos de las contraseñas: `sudo nano /etc/login.defs`
 
