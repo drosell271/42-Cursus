@@ -1,8 +1,8 @@
 # Born2BeRoot
 
 ## Como funciona una máquina virual
-Una máquina virtual es un software que simula un sistema de computación y puede ejecutar programas como si fuese una computadora real, 
-Una característica esencial de las máquinas virtuales es que los procesos que ejecutan están limitados por los recursos y abstracciones proporcionados por ellas. Estos procesos no pueden escaparse de esta "computadora virtual".
+Una máquina virtual es un software que simula un sistema de computación y puede ejecutar programas como si fuese una computadora real.
+ Una característica esencial de las máquinas virtuales es que los procesos que ejecutan están limitados por los recursos y abstracciones proporcionados por ellas. Estos procesos no pueden escaparse de esta "computadora virtual".
 
 <br>
 
