@@ -21,10 +21,10 @@ Debian:
 <br>
 
 ## Apt vs Aptitude
-Apt:
+Aptitude:
 - Sistema de gestión de paquetes de alto nivel
 
-Aptitude:
+Apt:
 - Sistema de gestión de paquetes de bajo nivel
 
 <br>
