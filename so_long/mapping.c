@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:52:25 by drosell-          #+#    #+#             */
-/*   Updated: 2022/11/15 19:13:05 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/11/15 19:46:59 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,12 @@ int	get_size_y(char *input)
 	y_size = 0;
 	while (temp)
 	{
+		free(temp);
 		temp = get_next_line(fd);
 		y_size++;
 	}
 	close(fd);
+	free(temp);
 	return (y_size);
 }
 
@@ -76,11 +78,11 @@ char	**generate_new_map(char	*input)
 	size_x = get_size_x(input);
 	size_y = get_size_y(input);
 	printf("\nX: %d | Y: %d", size_x, size_y);
-	/*if (size_x == -1 || size_y == -1)
+	if (size_x == -1 || size_y == -1)
 		return (NULL);
-	create_map(size_x, size_y, output);
-	refill (output, input);
-	if (check_map(output) == 0)
+	//create_map(size_x, size_y, output);
+	//refill (output, input);
+	/*if (check_map(output) == 0)
 		return (output);
 	free(output);*/
 	return (NULL);
