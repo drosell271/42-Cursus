@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 18:57:26 by drosell-          #+#    #+#             */
-/*   Updated: 2022/11/15 18:42:59 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/11/16 15:58:13 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ MAPPING
 char	**generate_new_map(char	*input);
 int		get_size_y(char *input);
 int		get_size_x(char *input);
-void	create_map(int size_x, int size_y, char **output);
-void	refill(char **output, char *input);
+char	**create_map(int size_x, int size_y);
+void	**refill(int size_x, int size_y, char **output, char *input);
 char	**generate_new_map(char	*input);
 
 /*
