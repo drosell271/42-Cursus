@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 18:57:26 by drosell-          #+#    #+#             */
-/*   Updated: 2022/11/16 15:58:13 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/11/18 19:54:34 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,23 @@
 
 /*
 +++++++++++++++++++
+CHECK_MAP.C
++++++++++++++++++++
+*/
+int		check_map_1(int size_x, int size_y, char **output);
+int		check_map_2(int size_x, int size_y, char **output);
+int		get_objects(int size_x, int size_y, char **output);
+int		check_border(int size_x, int size_y, char **output);
+
+/*
++++++++++++++++++++
+UTILS_1.C
++++++++++++++++++++
+*/
+size_t	ft_strlen_no_nl(const char *s);
+
+/*
++++++++++++++++++++
 MAPPING
 +++++++++++++++++++
 */
@@ -24,7 +41,7 @@ char	**generate_new_map(char	*input);
 int		get_size_y(char *input);
 int		get_size_x(char *input);
 char	**create_map(int size_x, int size_y);
-void	**refill(int size_x, int size_y, char **output, char *input);
+char	**refill(int size_x, int size_y, char **output, char *input);
 char	**generate_new_map(char	*input);
 
 /*
