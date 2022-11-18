@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:52:25 by drosell-          #+#    #+#             */
-/*   Updated: 2022/11/18 19:54:32 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/11/18 20:04:35 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ char	**generate_new_map(char	*input)
 
 	size_y = get_size_y(input);
 	size_x = get_size_x(input);
-	ft_printf("X: %d | Y: %d\n", size_x, size_y);
+	ft_printf("Tamaño del mapa (x: %d | y: %d)\n", size_x, size_y);
 	if (size_x == -1 || size_y == -1)
 		return (NULL);
 	output = create_map(size_x, size_y);

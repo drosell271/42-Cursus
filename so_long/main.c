@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 18:22:49 by drosell-          #+#    #+#             */
-/*   Updated: 2022/11/16 12:42:53 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/11/18 20:03:47 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int	main(int argc, char **argv)
 		ft_printf("Error en los argumentos de entrada :(\n");
 		return (0);
 	}
-	ft_printf("TODO OK :)\n");
 	map = generate_new_map(argv[1]);
 	system("leaks --q a.out");
 	return (0);
