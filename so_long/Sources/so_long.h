@@ -6,14 +6,27 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 18:57:26 by drosell-          #+#    #+#             */
-/*   Updated: 2022/11/18 19:54:34 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/11/29 18:19:12 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-#include "../libft/libft.h"
+#include "../../libft/libft.h"
+
+/*
++++++++++++++++++++
+PRINT_MSP.C
++++++++++++++++++++
+*/
+typedef struct s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_data;
 
 /*
 +++++++++++++++++++

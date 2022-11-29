@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:57:06 by drosell-          #+#    #+#             */
-/*   Updated: 2022/11/18 19:55:08 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/11/29 18:19:37 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int	check_border(int size_x, int size_y, char **output)
 
 int	check_map_1(int size_x, int size_y, char **output)
 {
+	ft_printf("check_map_1\n");
 	if (size_x == -1 || size_y == -1 || size_x < 2 || size_y < 2
 		|| ((size_x - 2) * (size_y - 2) < 4))
 	{
@@ -77,7 +78,7 @@ int	check_map_1(int size_x, int size_y, char **output)
 	}
 	if (get_objects(size_x, size_y, output) == -1)
 	{
-		ft_printf("FALTAN OBJETOS\n");
+		ft_printf("FALTAN O SOBRAN OBJETOS\n");
 		return (-1);
 	}
 	return (1);
