@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 18:22:49 by drosell-          #+#    #+#             */
-/*   Updated: 2022/11/18 20:03:47 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/11/29 18:41:07 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	map = generate_new_map(argv[1]);
+	
 	system("leaks --q a.out");
 	return (0);
 }

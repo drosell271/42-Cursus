@@ -6,14 +6,14 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 18:57:26 by drosell-          #+#    #+#             */
-/*   Updated: 2022/11/29 18:19:12 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/11/29 19:30:07 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-#include "../../libft/libft.h"
+# include "../Extra/libft.h"
 
 /*
 +++++++++++++++++++
@@ -21,12 +21,16 @@ PRINT_MSP.C
 +++++++++++++++++++
 */
 typedef struct s_data {
+	void	*win;
+	void	*mlx;
 	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
 }	t_data;
+
+int		print_map(char **map, int size_x, int size_y);
+void	print_floor(t_data *img, int size_x, int size_y);
+void	print_walls(t_data *img, char **map, int size_x, int size_y);
+void	print_objects(t_data *img, char **map, int size_x, int size_y);
+void	print_others(t_data *img, char **map, int size_x, int size_y);
 
 /*
 +++++++++++++++++++
@@ -44,6 +48,8 @@ UTILS_1.C
 +++++++++++++++++++
 */
 size_t	ft_strlen_no_nl(const char *s);
+char	*select_wall(int x);
+char	*select_object(int x);
 
 /*
 +++++++++++++++++++
