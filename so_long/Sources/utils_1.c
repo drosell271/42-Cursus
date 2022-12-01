@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:24:19 by drosell-          #+#    #+#             */
-/*   Updated: 2022/11/29 19:52:35 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/12/01 15:18:59 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,43 +22,49 @@ size_t	ft_strlen_no_nl(const char *s)
 	return (c);
 }
 
-char	*select_wall(int x)
+char	*select_wall(int rand)
 {
 	char	*output;
 
 	if (rand == 0)
-		output = "../Assets/arbol_1.xpm";
+		output = "./Assets/arbol_1.xpm";
 	else if (rand == 1)
-		output = "../Assets/arbol_2.xpm";
+		output = "./Assets/arbol_2.xpm";
 	else if (rand == 2)
-		output = "../Assets/arbol_3.xpm";
+		output = "./Assets/arbol_3.xpm";
 	else if (rand == 3)
-		output = "../Assets/piedra.xpm";
+		output = "./Assets/piedra.xpm";
+	else
+		output = NULL;
 	return (output);
 }
 
-char	*select_object(int x)
+char	*select_object(int rand)
 {
 	char	*output;
 
 	if (rand == 0)
-		output = "../Assets/fruta_1.xpm";
+		output = "./Assets/fruta_1.xpm";
 	else if (rand == 1)
-		output = "../Assets/fruta_2.xpm";
+		output = "./Assets/fruta_2.xpm";
 	else if (rand == 2)
-		output = "../Assets/fruta_3.xpm";
+		output = "./Assets/fruta_3.xpm";
 	else if (rand == 3)
-		output = "../Assets/fruta_4.xpm";
+		output = "./Assets/fruta_4.xpm";
+	else
+		output = NULL;
 	return (output);
 }
 
-char	*select_other(char *temp)
+char	*select_other(char temp)
 {
 	char	*output;
 
 	if (temp == 'P')
-		temp = "../Assets/mono_abajo.xpm";
+		output = "./Assets/mono_abajo.xpm";
 	else if (temp == 'E')
-		temp = "../Assets/salida_pendiente.xpm";
-	return (temp);
+		output = "./Assets/salida_pendiente.xpm";
+	else
+		output = NULL;
+	return (output);
 }

@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 18:57:26 by drosell-          #+#    #+#             */
-/*   Updated: 2022/11/29 19:30:07 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/12/01 14:42:51 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_data {
 	void	*img;
 }	t_data;
 
-int		print_map(char **map, int size_x, int size_y);
+void	print_map(char **map, int size_x, int size_y);
 void	print_floor(t_data *img, int size_x, int size_y);
 void	print_walls(t_data *img, char **map, int size_x, int size_y);
 void	print_objects(t_data *img, char **map, int size_x, int size_y);
@@ -48,8 +48,9 @@ UTILS_1.C
 +++++++++++++++++++
 */
 size_t	ft_strlen_no_nl(const char *s);
-char	*select_wall(int x);
-char	*select_object(int x);
+char	*select_wall(int rand);
+char	*select_object(int rand);
+char	*select_other(char temp);
 
 /*
 +++++++++++++++++++

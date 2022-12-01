@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:57:06 by drosell-          #+#    #+#             */
-/*   Updated: 2022/11/29 18:52:27 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/12/01 14:38:53 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	get_objects(int size_x, int size_y, char **output)
 	int	out[2];
 
 	c_y = 0;
-	ft_bzero(out, 2);
+	out[0] = 0;
+	out[1] = 0;
 	while (c_y < size_y)
 	{
 		c_x = 0;
@@ -64,33 +65,33 @@ int	check_border(int size_x, int size_y, char **output)
 
 int	check_map_1(int size_x, int size_y, char **output)
 {
-	ft_printf("check_map_1\n");
-	if (size_x == -1 || size_y == -1 || size_x < 2 || size_y < 2
-		|| ((size_x - 2) * (size_y - 2) < 4))
+	ft_printf("Comprobaciones 1\n");
+	if (size_x < 2 || size_y < 2)
 	{
-		ft_printf("EL MAPA TIENE MAL LAS DIMENSIONES\n");
+		ft_printf("EL MAPA ES DEMASIADO PEQUEÑO :(\n");
 		return (-1);
 	}
 	if (size_x == size_y)
 	{
-		ft_printf("EL MAPA ES CUADRADO\n");
+		ft_printf("EL MAPA ES CUADRADO :(\n");
 		return (-1);
 	}
-	if (get_objects(size_x, size_y, output) == -1)
+	if (check_border(size_x, size_y, output) == -1)
 	{
-		ft_printf("FALTAN O SOBRAN OBJETOS\n");
+		ft_printf("LOS BORDES ESTÁN MAL :(\n");
 		return (-1);
-	}
+	}	
 	return (1);
 }
 
 int	check_map_2(int size_x, int size_y, char **output)
 {
-	if (check_border(size_x, size_y, output) == -1)
+	ft_printf("Comprobaciones 2\n");
+	if (get_objects(size_x, size_y, output) == -1)
 	{
-		ft_printf("LOS BORDES ESTÁN MAL\n");
+		ft_printf("FALTAN O SOBRAN OBJETOS :(\n");
 		return (-1);
-	}	
+	}
 	/*if (check_path(size_x, size_y, output) == -1)
 	{
 		ft_printf("NO HAY CAMINO\n");
