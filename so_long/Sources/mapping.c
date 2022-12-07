@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:52:25 by drosell-          #+#    #+#             */
-/*   Updated: 2022/12/01 15:30:53 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/12/07 13:52:20 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,28 +101,25 @@ int	get_size_y(char *input)
 	return (y_size);
 }
 
-char	**generate_new_map(char	*input)
+char	**generate_new_map(t_map *map, char *input)
 {
 	char	**output;
-	int		size_x;
-	int		size_y;
 
-	size_y = get_size_y(input);
-	size_x = get_size_x(input);
-	ft_printf("Tamaño del mapa (x: %d | y: %d)\n", size_x, size_y);
-	if (size_x == -1 || size_y == -1)
+	map->size_y = get_size_y(input);
+	map->size_x = get_size_x(input);
+	ft_printf("Tamaño del mapa (x: %d | y: %d)\n", map->size_x, map->size_y);
+	if (map->size_x == -1 || map->size_y == -1)
 	{
 		ft_printf("EL MAPA TIENE MAL LAS DIMENSIONES :(\n");
-		return (NULL);
+		exit (1);
 	}
-	output = create_map(size_x, size_y);
-	output = refill (size_x, size_y, output, input);
-	if (check_map_1(size_x, size_y, output) == -1
-		|| check_map_2(size_x, size_y, output) == -1)
+	output = create_map(map->size_x, map->size_y);
+	output = refill (map->size_x, map->size_y, output, input);
+	if (check_map_1(map->size_x, map->size_y, output) == -1
+		|| check_map_2(map->size_x, map->size_y, output) == -1)
 	{
 		exit (1);
 	}
-	ft_printf("MAPA OK :)\n");
-	print_map(output, size_x, size_y);
+	ft_printf("Mapa correcto\n");
 	return (output);
 }

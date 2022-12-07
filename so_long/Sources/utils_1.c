@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:24:19 by drosell-          #+#    #+#             */
-/*   Updated: 2022/12/01 15:18:59 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/12/07 16:08:11 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,26 @@ char	*select_object(int rand)
 	return (output);
 }
 
-char	*select_other(char temp)
+char	*select_direction(t_player *player)
 {
 	char	*output;
 
-	if (temp == 'P')
+	if (player->direction == 'D')
 		output = "./Assets/mono_abajo.xpm";
-	else if (temp == 'E')
-		output = "./Assets/salida_pendiente.xpm";
+	else if (player->direction == 'U')
+		output = "./Assets/mono_arriba.xpm";
+	else if (player->direction == 'R')
+		output = "./Assets/mono_derecha.xpm";
+	else if (player->direction == 'L')
+		output = "./Assets/mono_izquierda.xpm";
 	else
 		output = NULL;
 	return (output);
+}
+
+int	close_cross(t_data *img)
+{
+	mlx_destroy_window(img->mlx, img->win);
+	ft_printf("Juego cerrado\n");
+	exit(0);
 }

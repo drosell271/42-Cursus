@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 18:22:49 by drosell-          #+#    #+#             */
-/*   Updated: 2022/12/01 14:42:08 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/12/07 13:52:06 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,15 @@ int	check_input(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
-	char	**map;
+	t_map	map;
 
 	if (check_input(argc, argv) != 1)
 	{
 		ft_printf("ERROR EN EL ARGUMENTO DE ENTRADA :(\n");
 		return (0);
 	}
-	ft_printf("ARGUMENTOS OK :)\n");
-	map = generate_new_map(argv[1]);
-	system("leaks --q a.out");
+	ft_printf("Argumentos correctos\n");
+	map.map = generate_new_map(&map, argv[1]);
+	print_map(&map);
 	return (0);
 }

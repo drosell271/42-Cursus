@@ -1,5 +1,5 @@
 /* XPM */
-static char *_9883_a0300143681ee5e535f2303a9b0ace9530bab6797ab6bac430df70c27c789fa8[] = {
+static char *grass_resized[] = {
 /* columns rows colors chars-per-pixel */
 "64 64 96 2 ",
 "   c #C22424",
