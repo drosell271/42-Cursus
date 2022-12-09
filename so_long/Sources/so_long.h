@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 18:57:26 by drosell-          #+#    #+#             */
-/*   Updated: 2022/12/09 15:33:53 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/12/09 17:56:14 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,23 @@
 
 # include "../Extra/libft.h"
 # include <mlx.h>
+# include <math.h>
+
+typedef struct search_data {
+	int			distance;
+	int			pos_x;
+	int			pos_y;
+	t_search	next;
+}	t_search;
 
 typedef struct map_data {
 	char	**map;
 	int		size_x;
 	int		size_y;
+	int		player_x;
+	int		player_y;
+	int		*target_x;
+	int		*target_y;
 }	t_map;
 
 typedef struct player_data {
@@ -116,5 +128,16 @@ UTILS_2.C
 char	*select_exit(t_player *player);
 int		render_frame(t_data *img);
 void	clean_soround(t_data *img);
+
+/*
++++++++++++++++++++
+CHECK_PATH.C
++++++++++++++++++++
+*/
+void	check_path(t_map *map);
+int		obtain_distance(int x_a, int y_a, int x_b, int y_b);
+void	get_objects_coords(t_map *map);
+void	get_num_objects(t_map *map);
+void	get_player(t_map *map);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:38:10 by drosell-          #+#    #+#             */
-/*   Updated: 2022/12/09 15:51:40 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:50:00 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,21 @@ void	player_init(t_player *player)
 
 int	key_hook(int keycode, t_data *img)
 {	
-	img->player.total_movements ++;
-	if (keycode == 13)
-		move_player(img, 'U');
-	else if (keycode == 0)
-		move_player(img, 'L');
-	else if (keycode == 1)
-		move_player(img, 'D');
-	else if (keycode == 2)
-		move_player(img, 'R');
+	if (keycode == 0 || keycode == 1 || keycode == 2 || keycode == 13)
+	{
+		ft_printf ("-----------------------------\n");
+		ft_printf ("Movimientos realizados: %d\n", img->player.total_movements);
+		ft_printf("Objetos restantes %d\n", img->player.objects_total);
+		ft_printf ("-----------------------------\n\n");
+		if (keycode == 13)
+			move_player(img, 'U');
+		else if (keycode == 0)
+			move_player(img, 'L');
+		else if (keycode == 1)
+			move_player(img, 'D');
+		else if (keycode == 2)
+			move_player(img, 'R');
+	}
 	else if (keycode == 53)
 		close_cross(img);
 	return (0);
@@ -42,13 +48,13 @@ int	move_player(t_data *img, char direction)
 	int		action;
 	int		move_done;
 
-	ft_printf("Moving %c\n ", direction);
 	move_done = 0;
 	img->player.direction = direction;
 	action = check_object(img, obtain_object(img, direction));
 	if (action == 1)
 	{
 		clean_soround(img);
+		img->player.total_movements ++;
 		if (direction == 'U')
 			img->map.map[img->player.pos_y - 1][img->player.pos_x] = 'P';
 		else if (direction == 'D')

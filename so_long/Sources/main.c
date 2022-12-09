@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 18:22:49 by drosell-          #+#    #+#             */
-/*   Updated: 2022/12/09 15:50:53 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/12/09 17:47:11 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	main(int argc, char **argv)
 	}
 	ft_printf("Argumentos correctos\n");
 	map.map = generate_new_map(&map, argv[1]);
+	check_path(&map);
 	print_map(&map);
 	return (0);
 }

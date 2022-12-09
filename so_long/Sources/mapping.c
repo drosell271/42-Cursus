@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:52:25 by drosell-          #+#    #+#             */
-/*   Updated: 2022/12/07 13:52:20 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:09:18 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,6 @@ char	**generate_new_map(t_map *map, char *input)
 
 	map->size_y = get_size_y(input);
 	map->size_x = get_size_x(input);
-	ft_printf("Tamaño del mapa (x: %d | y: %d)\n", map->size_x, map->size_y);
 	if (map->size_x == -1 || map->size_y == -1)
 	{
 		ft_printf("EL MAPA TIENE MAL LAS DIMENSIONES :(\n");

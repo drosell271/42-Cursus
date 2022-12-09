@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:57:06 by drosell-          #+#    #+#             */
-/*   Updated: 2022/12/01 14:38:53 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:58:21 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ int	check_border(int size_x, int size_y, char **output)
 
 int	check_map_1(int size_x, int size_y, char **output)
 {
-	ft_printf("Comprobaciones 1\n");
 	if (size_x < 2 || size_y < 2)
 	{
 		ft_printf("EL MAPA ES DEMASIADO PEQUEÑO :(\n");
@@ -86,16 +85,10 @@ int	check_map_1(int size_x, int size_y, char **output)
 
 int	check_map_2(int size_x, int size_y, char **output)
 {
-	ft_printf("Comprobaciones 2\n");
 	if (get_objects(size_x, size_y, output) == -1)
 	{
 		ft_printf("FALTAN O SOBRAN OBJETOS :(\n");
 		return (-1);
 	}
-	/*if (check_path(size_x, size_y, output) == -1)
-	{
-		ft_printf("NO HAY CAMINO\n");
-		return (-1);
-	}*/
 	return (1);
 }

@@ -6,7 +6,7 @@
 #    By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 11:06:47 by drosell-          #+#    #+#              #
-#    Updated: 2022/12/07 14:34:21 by drosell-         ###   ########.fr        #
+#    Updated: 2022/12/09 17:24:14 by drosell-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@
 CFILES		= \
 			Sources/main.c Sources/check_map.c Sources/mapping.c Sources/print_map_1.c \
 			Sources/print_map_2.c Sources/utils_1.c Sources/utils_2.c Sources/game.c\
+			Sources/check_path.c
 
 OBJS	=	${CFILES:.c=.o}
 
@@ -57,8 +58,6 @@ AR = ar
 ARFLAGS = -rcs
 RM = rm -f
 
-LIBFT = $(OLIBFT)
-
 ###############################################################################
 #                                              OPTIONS                        #
 ###############################################################################
@@ -68,7 +67,7 @@ ${NAME}: ${NLIBRARY} ${OBJS}
 	@${CC} ${CFLAGS} ${OBJS} ${NLIBRARY} ${OPGRAFIC} -o $@ #-fsanitize=address -g
 	@echo "Created so_long."
 
-$(NLIBRARY): $(LIBFT)
+$(NLIBRARY): $(OLIBFT)
 	@$(AR) $(ARFLAGS) $@ $^
 	@echo "Created LIBFT."
 
@@ -77,7 +76,7 @@ $(NLIBRARY): $(LIBFT)
 
 ###############################################################################
 clean:
-		@${RM} ${OBJS} ${LIBFT}
+		@${RM} ${OBJS} ${OLIBFT}
 		@echo "Delete .o."
 
 fclean: clean

@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:33:03 by drosell-          #+#    #+#             */
-/*   Updated: 2022/12/09 15:51:20 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:14:12 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,9 +128,12 @@ void	print_map(t_map *map)
 	print_floor(&img);
 	print_walls(&img);
 	print_objects(&img);
-	ft_printf("Objetos restantes %d\n", img.player.objects_total);
 	print_player(&img);
 	print_exit(&img);
+	ft_printf ("-----------------------------\n");
+	ft_printf ("Movimientos realizados: %d\n", img.player.total_movements);
+	ft_printf("Objetos restantes %d\n", img.player.objects_total);
+	ft_printf ("-----------------------------\n\n");
 	mlx_hook(img.win, 17, 1L << 0, close_cross, &img);
 	mlx_key_hook(img.win, key_hook, &img);
 	mlx_loop_hook(img.mlx, render_frame, &img);
