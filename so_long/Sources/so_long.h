@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 18:57:26 by drosell-          #+#    #+#             */
-/*   Updated: 2022/12/07 18:37:29 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/12/09 15:33:53 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct player_data {
 	char	direction;
 	int		moves;
 	int		objects_total;
-
+	int		total_movements;
 }	t_player;
 
 typedef struct s_data {
@@ -115,5 +115,6 @@ UTILS_2.C
 */
 char	*select_exit(t_player *player);
 int		render_frame(t_data *img);
+void	clean_soround(t_data *img);
 
 #endif

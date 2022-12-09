@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:33:03 by drosell-          #+#    #+#             */
-/*   Updated: 2022/12/07 19:00:23 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/12/09 15:51:20 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	print_floor(t_data *img)
 	int	y;
 
 	x = -1;
-
 	img->img = mlx_xpm_file_to_image(
 			img->mlx, "./Assets/suelo.xpm", &width, &height);
 	while (++x < img->map.size_x)
@@ -41,7 +40,6 @@ void	print_walls(t_data *img)
 	int	height;
 	int	x;
 	int	y;
-
 
 	y = -1;
 	while (++y < img->map.size_y)
@@ -75,7 +73,6 @@ void	print_objects(t_data *img)
 		x = -1;
 		while (++x <= img->map.size_x)
 		{
-
 			if (img->map.map[y][x] == 'C')
 			{
 				img->img = mlx_xpm_file_to_image(img->mlx,
@@ -123,6 +120,7 @@ void	print_map(t_map *map)
 
 	player_init(&player);
 	img.player = player;
+	img.player.total_movements = 0;
 	img.map = *map;
 	img.mlx = mlx_init();
 	img.win = mlx_new_window(img.mlx, img.map.size_x * 64,
