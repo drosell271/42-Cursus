@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 18:57:26 by drosell-          #+#    #+#             */
-/*   Updated: 2022/12/09 17:56:14 by drosell-         ###   ########.fr       */
+/*   Updated: 2022/12/13 17:00:28 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,15 @@
 # include <math.h>
 
 typedef struct search_data {
+	int			id;
+	int			level;
 	int			distance;
-	int			pos_x;
-	int			pos_y;
-	t_search	next;
+	int			position_x;
+	int			position_y;
+	int			destination_x;
+	int			destination_y;
+	t_search	*previous;
+	t_search	*next;
 }	t_search;
 
 typedef struct map_data {
@@ -30,6 +35,7 @@ typedef struct map_data {
 	int		size_y;
 	int		player_x;
 	int		player_y;
+	int		target_number;
 	int		*target_x;
 	int		*target_y;
 }	t_map;
@@ -131,13 +137,21 @@ void	clean_soround(t_data *img);
 
 /*
 +++++++++++++++++++
-CHECK_PATH.C
+CHECK_PATH_1.C
 +++++++++++++++++++
 */
 void	check_path(t_map *map);
-int		obtain_distance(int x_a, int y_a, int x_b, int y_b);
 void	get_objects_coords(t_map *map);
 void	get_num_objects(t_map *map);
 void	get_player(t_map *map);
+int		obtain_distance(int x_a, int y_a, int x_b, int y_b);
+
+/*
++++++++++++++++++++
+CHECK_PATH_2.C
++++++++++++++++++++
+*/
+int		search_path(t_map *map, t_search *search, int target);
+int		main_search(t_search *search);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 11:06:47 by drosell-          #+#    #+#              #
-#    Updated: 2022/12/09 17:24:14 by drosell-         ###   ########.fr        #
+#    Updated: 2022/12/13 16:18:42 by drosell-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 CFILES		= \
 			Sources/main.c Sources/check_map.c Sources/mapping.c Sources/print_map_1.c \
 			Sources/print_map_2.c Sources/utils_1.c Sources/utils_2.c Sources/game.c\
-			Sources/check_path.c
+			Sources/check_path_1.c Sources/check_path_2.c
 
 OBJS	=	${CFILES:.c=.o}
 
