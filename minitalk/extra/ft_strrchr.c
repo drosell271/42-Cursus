@@ -1,48 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/14 17:39:34 by drosell-          #+#    #+#             */
-/*   Updated: 2022/12/16 13:52:45 by drosell-         ###   ########.fr       */
+/*   Created: 2022/09/20 16:09:00 by drosell-          #+#    #+#             */
+/*   Updated: 2022/09/20 17:06:49 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <signal.h>
+#include "libft.h"
 
-void	int_to_binary(int input, int pid)
-{	
+char	*ft_strrchr(const char *s, int c)
+{
 	int	count;
-	int	actual_speed;
 
-	count = 1;
-	while (count <= 8)
-	{	
-		if (check_sended(send_binary(input, pid), ))
-		{
-			input = input << 1;
-			count++;
-		}
-	}
-}
-
-int	send_binary(int input, int pid)
-{
-	if (input & 128)
+	count = 0;
+	while (s[count])
+		count++;
+	while (count >= 0)
 	{
-		kill(pid, SIGUSR1);
-		return (1);
+		if (s[count] == (char) c)
+			return ((char *)(s + count));
+		count--;
 	}
-	else
-	{
-		kill(pid, SIGUSR2);
-		return (0);
-	}
-}
-
-int	check_sended(int sended)
-{
-
+	return (NULL);
 }

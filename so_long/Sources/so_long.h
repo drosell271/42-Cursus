@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 18:57:26 by drosell-          #+#    #+#             */
-/*   Updated: 2022/12/13 17:00:28 by drosell-         ###   ########.fr       */
+/*   Updated: 2023/02/10 20:47:49 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,6 @@
 # include "../Extra/libft.h"
 # include <mlx.h>
 # include <math.h>
-
-typedef struct search_data {
-	int			id;
-	int			level;
-	int			distance;
-	int			position_x;
-	int			position_y;
-	int			destination_x;
-	int			destination_y;
-	t_search	*previous;
-	t_search	*next;
-}	t_search;
 
 typedef struct map_data {
 	char	**map;
@@ -135,23 +123,11 @@ char	*select_exit(t_player *player);
 int		render_frame(t_data *img);
 void	clean_soround(t_data *img);
 
-/*
-+++++++++++++++++++
-CHECK_PATH_1.C
-+++++++++++++++++++
-*/
-void	check_path(t_map *map);
-void	get_objects_coords(t_map *map);
-void	get_num_objects(t_map *map);
-void	get_player(t_map *map);
-int		obtain_distance(int x_a, int y_a, int x_b, int y_b);
 
-/*
-+++++++++++++++++++
-CHECK_PATH_2.C
-+++++++++++++++++++
-*/
-int		search_path(t_map *map, t_search *search, int target);
-int		main_search(t_search *search);
+void	check_path(t_map *input);
+char	**new_map_generator(t_map *input);
+void	new_map_filler_1(t_map *input, char **new_map);
+void	new_map_filler_2(t_map *input, char **new_map);
+int		check_if(t_map *input, char **new_map, int x, int y);
 
 #endif
