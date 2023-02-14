@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:52:25 by drosell-          #+#    #+#             */
-/*   Updated: 2022/12/09 16:09:18 by drosell-         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:48:43 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ int	get_size_y(char *input)
 	char	*temp;
 
 	fd = open(input, O_RDONLY);
+	if (fd == -1)
+		return (-2);
 	temp = get_next_line(fd);
 	y_size = 0;
 	while (temp)
@@ -106,6 +108,11 @@ char	**generate_new_map(t_map *map, char *input)
 	char	**output;
 
 	map->size_y = get_size_y(input);
+	if (map->size_y == -2)
+	{
+		ft_printf("EL MAPA NO EXISTE :(\n");
+		exit (1);
+	}
 	map->size_x = get_size_x(input);
 	if (map->size_x == -1 || map->size_y == -1)
 	{

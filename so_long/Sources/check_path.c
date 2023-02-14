@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:55:49 by drosell-          #+#    #+#             */
-/*   Updated: 2023/02/14 16:43:27 by drosell-         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:41:47 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,15 @@ int	check_path(t_map *input)
 		x = 0;
 		while (x < input->size_x)
 		{
-			if (new_map[y][x] != 'O'
-			&& new_map[y][x] != 'X'
+			if (new_map[y][x] != 'O' && new_map[y][x] != 'X'
 			&& new_map[y][x] != 'E')
 				return (-1);
 			x++;
 		}
+		free(new_map[y]);
 		y++;
 	}
-	y = 0;
-	/*while (y < input->size_y)
-	{
-		ft_printf("%s\n", new_map[y]);
-		y++;
-	}*/
+	free(new_map);
 	return (1);
 }
 
