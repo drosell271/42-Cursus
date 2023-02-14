@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 18:57:26 by drosell-          #+#    #+#             */
-/*   Updated: 2023/02/10 20:47:49 by drosell-         ###   ########.fr       */
+/*   Updated: 2023/02/14 16:41:33 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,8 +123,12 @@ char	*select_exit(t_player *player);
 int		render_frame(t_data *img);
 void	clean_soround(t_data *img);
 
-
-void	check_path(t_map *input);
+/*
++++++++++++++++++++
+CHECK_PATH.C
++++++++++++++++++++
+*/
+int		check_path(t_map *input);
 char	**new_map_generator(t_map *input);
 void	new_map_filler_1(t_map *input, char **new_map);
 void	new_map_filler_2(t_map *input, char **new_map);

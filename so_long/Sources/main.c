@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 18:22:49 by drosell-          #+#    #+#             */
-/*   Updated: 2023/02/10 20:19:16 by drosell-         ###   ########.fr       */
+/*   Updated: 2023/02/14 16:42:33 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,11 @@ int	main(int argc, char **argv)
 	}
 	ft_printf("Argumentos correctos\n");
 	map.map = generate_new_map(&map, argv[1]);
-	check_path(&map);
+	if (check_path(&map) == -1)
+	{
+		ft_printf("ERROR, NO EXISTE CAMINO\n");
+		return (0);
+	}
 	print_map(&map);
 	return (0);
 }

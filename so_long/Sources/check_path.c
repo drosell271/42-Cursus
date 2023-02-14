@@ -6,31 +6,42 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:55:49 by drosell-          #+#    #+#             */
-/*   Updated: 2023/02/10 21:05:13 by drosell-         ###   ########.fr       */
+/*   Updated: 2023/02/14 16:43:27 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	check_path(t_map *input)
+int	check_path(t_map *input)
 {
 	char	**new_map;
-	//int	x;
+	int		x;
 	int		y;
 
 	new_map = new_map_generator(input);
 	new_map_filler_1(input, new_map);
 	new_map_filler_2(input, new_map);
-	
-
-
 	y = 0;
 	while (y < input->size_y)
 	{
-		ft_printf("%s\n", new_map[y]);
+		x = 0;
+		while (x < input->size_x)
+		{
+			if (new_map[y][x] != 'O'
+			&& new_map[y][x] != 'X'
+			&& new_map[y][x] != 'E')
+				return (-1);
+			x++;
+		}
 		y++;
 	}
-	return ;
+	y = 0;
+	/*while (y < input->size_y)
+	{
+		ft_printf("%s\n", new_map[y]);
+		y++;
+	}*/
+	return (1);
 }
 
 char	**new_map_generator(t_map *input)
