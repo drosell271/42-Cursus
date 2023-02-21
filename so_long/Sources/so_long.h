@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 18:57:26 by drosell-          #+#    #+#             */
-/*   Updated: 2023/02/14 17:34:40 by drosell-         ###   ########.fr       */
+/*   Updated: 2023/02/21 16:16:42 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ UTILS_2.C
 char	*select_exit(t_player *player);
 int		render_frame(t_data *img);
 void	clean_soround(t_data *img);
+int		check_e(char **new_map, t_map *input, int test_x, int test_y);
 
 /*
 +++++++++++++++++++

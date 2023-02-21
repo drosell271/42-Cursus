@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:24:19 by drosell-          #+#    #+#             */
-/*   Updated: 2023/02/14 17:34:36 by drosell-         ###   ########.fr       */
+/*   Updated: 2023/02/21 16:17:17 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,16 @@ void	clean_soround(t_data *img)
 	else if (img->map.map[img->player.pos_y - 1][img->player.pos_x - 1] == 'P')
 		img->map.map[img->player.pos_y - 1][img->player.pos_x - 1] = 0;
 	return ;
+}
+
+int	check_e(char **new_map, t_map *input, int test_x, int test_y)
+{
+	if (new_map[test_y][test_x] != 'E')
+		return (1);
+	else if (input->map[test_y + 1][test_x] == '1'
+		&& input->map[test_y - 1][test_x] == '1'
+		&& input->map[test_y][test_x + 1] == '1'
+		&& input->map[test_y][test_x - 1] == '1')
+		return (-1);
+	return (1);
 }

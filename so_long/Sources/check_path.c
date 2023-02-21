@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:55:49 by drosell-          #+#    #+#             */
-/*   Updated: 2023/02/14 17:41:47 by drosell-         ###   ########.fr       */
+/*   Updated: 2023/02/21 16:17:20 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@ int	check_path(t_map *input)
 		x = 0;
 		while (x < input->size_x)
 		{
-			if (new_map[y][x] != 'O' && new_map[y][x] != 'X'
-			&& new_map[y][x] != 'E')
-				return (-1);
+			if (new_map[y][x] != 'O' && new_map[y][x] != 'X')
+			{
+				if (check_e(new_map, input, x, y) == -1 || new_map[y][x] != 'E')
+					return (-1);
+			}
 			x++;
 		}
 		free(new_map[y]);
