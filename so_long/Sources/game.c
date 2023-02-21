@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:38:10 by drosell-          #+#    #+#             */
-/*   Updated: 2022/12/09 16:50:00 by drosell-         ###   ########.fr       */
+/*   Updated: 2023/02/21 17:50:58 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ int	key_hook(int keycode, t_data *img)
 {	
 	if (keycode == 0 || keycode == 1 || keycode == 2 || keycode == 13)
 	{
-		ft_printf ("-----------------------------\n");
+		/*ft_printf ("-----------------------------\n");
 		ft_printf ("Movimientos realizados: %d\n", img->player.total_movements);
 		ft_printf("Objetos restantes %d\n", img->player.objects_total);
-		ft_printf ("-----------------------------\n\n");
+		ft_printf ("-----------------------------\n\n");*/
 		if (keycode == 13)
 			move_player(img, 'U');
 		else if (keycode == 0)
@@ -37,6 +37,10 @@ int	key_hook(int keycode, t_data *img)
 			move_player(img, 'D');
 		else if (keycode == 2)
 			move_player(img, 'R');
+		ft_printf ("-----------------------------\n");
+		ft_printf ("Movimientos realizados: %d\n", img->player.total_movements);
+		ft_printf("Objetos restantes %d\n", img->player.objects_total);
+		ft_printf ("-----------------------------\n\n");
 	}
 	else if (keycode == 53)
 		close_cross(img);
