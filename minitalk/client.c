@@ -15,95 +15,63 @@
 #include <unistd.h>
 #include "libft/libft.h"
 
-// Estructura para almacenar datos entre llamadas a la función de manejo de señal
-typedef struct {
-    int received;
-    int byte_index;
-    char current_byte;
-} signal_data_t;
-
-// Función que se llama cuando se recibe una señal
-static void handle_signal(int sig, siginfo_t *info, void *context)
+// Función para manejar las señales SIGUSR1 y SIGUSR2
+static void signal_handler(int signal)
 {
-    signal_data_t *data = (signal_data_t *)context;
-    
-    if (sig == SIGUSR1) {
-        data->current_byte |= (1 << data->byte_index);
-        ++data->byte_index;
-    } else {
-        ++data->received;
-        data->current_byte |= (1 << data->byte_index);
-        ++data->byte_index;
-    }
-    
-    // Si se ha recibido un byte completo, imprimirlo y reiniciar los datos
-    if (data->byte_index >= 8) {
-        if (data->current_byte == '\0') {
-            ft_putnbr_fd(data->received, 1);
-            ft_putchar_fd('\n', 1);
-            exit(0);
-        }
-        data->byte_index = 0;
-        data->current_byte = 0;
-    }
+	static int received_signals = 0;
+
+	if (signal == SIGUSR1)
+		++received_signals; // Aumenta el contador de señales recibidas
+	else
+	{
+		ft_putnbr_fd(received_signals, 1); // Escribe en la salida estándar la cantidad de señales recibidas
+		ft_putchar_fd('\n', 1);			   // Escribe un salto de línea en la salida estándar
+		exit(0);						   // Termina el proceso
+	}
 }
 
-// Envia una cadena de caracteres al proceso con PID 'pid'
-static void send_string(int pid, const char *str)
+// Función para enviar señales a otro proceso
+static void send_signals(int pid, char *string)
 {
-    // Enviar longitud de la cadena al proceso receptor
-    int length = ft_strlen(str);
-    ft_putstr_fd("Sent    : ", 1);
-    ft_putnbr_fd(length, 1);
-    ft_putchar_fd('\n', 1);
-    kill(pid, SIGUSR1);
-    usleep(100);
-    
-    int i = 0;
-    while (i < length) {
-        // Enviar cada caracter de la cadena, uno por uno
-        char c = str[i];
-        int j = 0;
-        while (j < 8) {
-            if (c & (1 << j))
-                kill(pid, SIGUSR2);
-            else
-                kill(pid, SIGUSR1);
-            usleep(100);
-            ++j;
-        }
-        ++i;
-    }
-    
-    // Enviar un byte nulo para indicar el final de la cadena
-    i = 0;
-    while (i < 8) {
-        kill(pid, SIGUSR1);
-        usleep(100);
-        ++i;
-    }
+	int i;
+	char c;
+	// Itera por cada caracter en la cadena a enviar
+	while (*string)
+	{
+		i = 8;		   // Número de bits en un byte
+		c = *string++; // Obtiene el caracter y avanza al siguiente
+		// Itera por cada bit en el caracter
+		while (i--)
+		{
+			if (c >> i & 1)			// Si el bit es 1
+				kill(pid, SIGUSR2); // Envía la señal SIGUSR2
+			else
+				kill(pid, SIGUSR1); // Si el bit es 0, envía la señal SIGUSR1
+			usleep(100);			// Espera un tiempo para enviar la siguiente señal
+		}
+	}
+	i = 8;
+	// Envía 8 señales SIGUSR1 para indicar que se ha terminado de enviar la cadena
+	while (i--)
+	{
+		kill(pid, SIGUSR1);
+		usleep(100);
+	}
 }
 
 int main(int argc, char **argv)
 {
-    if (argc != 3 || !ft_strlen(argv[2]))
-        return (1);
-    
-    // Configurar la estructura para almacenar datos entre llamadas a la función de manejo de señal
-    signal_data_t data = {0, 0, 0};
-    struct sigaction action = {0};
-    action.sa_sigaction = handle_signal;
-    action.sa_flags = SA_SIGINFO;
-    action.sa_ctx = (void *)&data;
-    sigaction(SIGUSR1, &action, NULL);
-    sigaction(SIGUSR2, &action, NULL);
-    
-    // Enviar la cadena de caracteres al proceso receptor
-    send_string(ft_atoi(argv[1]), argv[2]);
-    
-    // Esperar señales infinitamente
-    while (1)
-        pause();
-    
-    return (0);
+	// Verifica que se han pasado los argumentos requeridos
+	if (argc != 3 || !ft_strlen(argv[2]))
+		return (1);
+	ft_putstr_fd("Sent : ", 1);
+	ft_putnbr_fd(ft_strlen(argv[2]), 1); // Escribe en la salida estándar la cantidad de caracteres en la cadena a enviar
+	ft_putchar_fd('\n', 1);
+	ft_putstr_fd("Received: ", 1);
+	signal(SIGUSR1, signal_handler);		 // Asigna la función signal_handler a la señal SIGUSR1
+	signal(SIGUSR2, signal_handler);		 // Asigna la función signal_handler a la señal SIGUSR2
+	send_signals(ft_atoi(argv[1]), argv[2]); // Envía las señales
+	while (1)
+		pause(); // Pausa el proceso hasta que se reciba una señal
+	return (0);
 }

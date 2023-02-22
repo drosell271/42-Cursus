@@ -14,70 +14,64 @@
 #include <unistd.h>
 #include "libft/libft.h"
 
-static void	action(int sig, siginfo_t *info, void *context)
+// Definición de la función que maneja la señal recibida
+static void handler(int sig, siginfo_t *info, void *context)
 {
-	// Usamos variables estáticas para mantener el estado entre las llamadas a esta función
-	static int				i = 0;
-	static pid_t			client_pid = 0;
-	static unsigned char	c = 0;
+  static int bit_index = 0;           // Índice del bit actual
+  static pid_t client_pid = 0;        // PID del cliente
+  static unsigned char message = 0;   // Mensaje recibido
 
-	(void)context;
+  (void)context;  // Evita advertencias sobre la variable no utilizada
 
-	// Si es la primera vez que recibimos una señal, guardamos el PID del cliente
-	if (!client_pid)
-		client_pid = info->si_pid;
+  if (!client_pid)
+    client_pid = info->si_pid;
 
-	// Agregamos un bit a nuestro búfer dependiendo de la señal recibida
-	c |= (sig == SIGUSR2);
+  // Lee el bit recibido
+  message |= (sig == SIGUSR2);
 
-	// Cuando llegamos al octavo bit, procesamos el byte
-	if (++i == 8)
-	{
-		i = 0;
+  // Verifica si ya se leyeron los 8 bits del mensaje
+  if (++bit_index == 8)
+  {
+    bit_index = 0;
 
-		// Si el byte es cero, enviamos una señal al cliente y reiniciamos el estado
-		if (!c)
-		{
-			kill(client_pid, SIGUSR2);
-			client_pid = 0;
-			return ;
-		}
+    // Si el mensaje es el carácter nulo, indica que se ha terminado la transmisión
+    if (!message)
+    {
+      // Envia la señal SIGUSR2 al cliente para indicar que se ha terminado la transmisión
+      kill(client_pid, SIGUSR2);
+      client_pid = 0;
+      return ;
+    }
 
-		// Si el byte no es cero, escribimos el carácter en la salida estándar
-		ft_putchar_fd(c, 1);
-		c = 0;
+    // Muestra el carácter recibido por la salida estándar
+    ft_putchar_fd(message, 1);
+    message = 0;
 
-		// Enviamos una señal al cliente indicando que hemos procesado el byte
-		kill(client_pid, SIGUSR1);
-	}
-	else
-	{
-		// Desplazamos el último bit recibido para prepararnos para recibir el siguiente
-		c <<= 1;
-	}
+    // Envia la señal SIGUSR1 al cliente para indicar que está listo para recibir el siguiente carácter
+    kill(client_pid, SIGUSR1);
+  }
+  else
+    message <<= 1;
 }
 
 int	main(void)
 {
-	struct sigaction	s_sigaction;
+  struct sigaction signal_action;
 
-	// Mostramos el PID del servidor
-	ft_putstr_fd("Server PID: ", 1);
-	ft_putnbr_fd(getpid(), 1);
-	ft_putchar_fd('\n', 1);
+  // Muestra el PID del servidor
+  ft_putstr_fd("Server PID: ", 1);
+  ft_putnbr_fd(getpid(), 1);
+  ft_putchar_fd('\n', 1);
 
-	// Configuramos las señales para que llamen a nuestra función de manejo
-	s_sigaction.sa_sigaction = action;
-	s_sigaction.sa_flags = SA_SIGINFO;
-	sigaction(SIGUSR1, &s_sigaction, 0);
-	sigaction(SIGUSR2, &s_sigaction, 0);
+  // Registra la función manejadora de señales
+  signal_action.sa_sigaction = handler;
+  signal_action.sa_flags = SA_SIGINFO;
+  sigaction(SIGUSR1, &signal_action, 0);
+  sigaction(SIGUSR2, &signal_action, 0);
 
-	// Esperamos por señales
-	while (1)
-	{
-		pause();
-	}
+  // Espera a que lleguen señales
+  while (1)
+    pause();
 
-	// Este return nunca se alcanza
-	return (0);
+  return (0);
 }
