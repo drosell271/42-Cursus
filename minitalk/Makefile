@@ -20,16 +20,21 @@ all: server client
 
 bonus: server client
 
-server: server.o libft
-	$(CC) -o $@ $< -Llibft -lft
+server: server.o libft/libft.a
+	$(CC) -o $@ $^ -Llibft -lft
 
-client: client.o libft
-	$(CC) -o $@ $< -Llibft -lft
+client: client.o libft/libft.a
+	$(CC) -o $@ $^ -Llibft -lft
 
-%.o: %.c
-	$(CC) -c $(CFLAGS) $?
+server.o: server.c
+	$(CC) -c $(CFLAGS) $< -o $@
 
-libft:
+client.o: client.c
+	$(CC) -c $(CFLAGS) $< -o $@
+
+.PHONY: server.o client.o
+
+libft/libft.a:
 	make -C libft
 
 clean:
@@ -42,3 +47,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: all bonus libft clean fclean re
+
