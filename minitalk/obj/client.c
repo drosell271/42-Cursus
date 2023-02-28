@@ -6,7 +6,7 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 22:26:30 by drosell-          #+#    #+#             */
-/*   Updated: 2023/02/28 16:23:04 by drosell-         ###   ########.fr       */
+/*   Updated: 2023/02/28 16:34:17 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	send_signals(int pid, char *string)
 	while (i--)
 	{
 		kill(pid, SIGUSR1);
-		usleep(100);
+		usleep(300);
 	}
 }
 
