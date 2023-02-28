@@ -6,13 +6,13 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 22:26:33 by drosell-          #+#    #+#             */
-/*   Updated: 2023/02/24 17:47:09 by drosell-         ###   ########.fr       */
+/*   Updated: 2023/02/28 16:23:06 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
 #include <unistd.h>
-#include "libft/libft.h"
+#include "../libft/libft.h"
 
 // Definición de la función que maneja la señal recibida
 static void	handler(int sig, siginfo_t *info, void *context)

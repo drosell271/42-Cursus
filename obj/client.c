@@ -6,14 +6,14 @@
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 22:26:30 by drosell-          #+#    #+#             */
-/*   Updated: 2023/02/24 17:47:05 by drosell-         ###   ########.fr       */
+/*   Updated: 2023/02/28 16:23:04 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "libft/libft.h"
+#include "../libft/libft.h"
 
 static void	signal_handler(int signal)
 {

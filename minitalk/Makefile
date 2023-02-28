@@ -6,45 +6,60 @@
 #    By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/22 22:26:25 by drosell-          #+#    #+#              #
-#    Updated: 2023/02/22 22:26:25 by drosell-         ###   ########.fr        #
+#    Updated: 2023/02/28 16:27:46 by drosell-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SOURCES = server.c client.c
-OBJECTS = $(SOURCES:.c=.o)
+# Nombre de los ejecutables
+NAME1 = client
+NAME2 = server
 
+# Compilador y opciones de compilación
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-all: server client
+# Directorios del proyecto
+SRC_DIR = src
+INC_DIR = include
+OBJ_DIR = obj
 
-bonus: server client
+# Biblioteca
+LIBFT_DIR = libft
+LIBFT = $(LIBFT_DIR)/libft.a
 
-server: server.o libft/libft.a
-	$(CC) -o $@ $^ -Llibft -lft
+# Archivos fuente y objetos
+SRC1 = client.c
+SRC2 = server.c
+OBJ1 = $(addprefix $(OBJ_DIR)/, $(SRC1:.c=.o))
+OBJ2 = $(addprefix $(OBJ_DIR)/, $(SRC2:.c=.o))
 
-client: client.o libft/libft.a
-	$(CC) -o $@ $^ -Llibft -lft
+# Reglas
+all: $(NAME1) $(NAME2)
 
-server.o: server.c
-	$(CC) -c $(CFLAGS) $< -o $@
+$(NAME1): $(OBJ1) $(LIBFT)
+	$(CC) $(CFLAGS) -I $(INC_DIR) -o $(NAME1) $^
 
-client.o: client.c
-	$(CC) -c $(CFLAGS) $< -o $@
+$(NAME2): $(OBJ2) $(LIBFT)
+	$(CC) $(CFLAGS) -I $(INC_DIR) -o $(NAME2) $^
 
-.PHONY: server.o client.o
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -I $(INC_DIR) -o $@ -c $<
 
-libft/libft.a:
-	make -C libft
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
+$(LIBFT):
+	make -C $(LIBFT_DIR)
 
 clean:
-	rm -f $(OBJECTS)
-	make -C libft clean
-	
+	rm -f $(OBJ_DIR)/*.o
+	make -C $(LIBFT_DIR) clean
+
 fclean: clean
-	rm -f server client libft/libft.a
+	rm -f $(NAME1) $(NAME2)
+	make -C $(LIBFT_DIR) fclean
 
 re: fclean all
 
-.PHONY: all bonus libft clean fclean re
+.PHONY: all clean fclean re
 
