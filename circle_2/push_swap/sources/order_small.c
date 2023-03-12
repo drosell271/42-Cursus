@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ordernums_peq.c                                    :+:      :+:    :+:   */
+/*   order_small.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gemartin <gemartin@student.42barc...>      +#+  +:+       +#+        */
+/*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 15:49:23 by gemartin          #+#    #+#             */
-/*   Updated: 2022/04/13 11:41:34 by marvin           ###   ########.fr       */
+/*   Updated: 2023/03/12 17:52:12 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/pushswap.h"
+#include "pushswap.h"
 
 void	ordernums_peq_sb(t_list *d)
 {

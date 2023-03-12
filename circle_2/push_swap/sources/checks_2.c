@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sa.c                                               :+:      :+:    :+:   */
+/*   checks_2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gemartin <gemartin@student.42barc...>      +#+  +:+       +#+        */
+/*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/02 13:08:22 by gemartin          #+#    #+#             */
-/*   Updated: 2022/04/07 23:10:55 by marvin           ###   ########.fr       */
+/*   Created: 2023/03/12 17:48:25 by drosell-          #+#    #+#             */
+/*   Updated: 2023/03/12 17:48:25 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/pushswap.h"
+#include "pushswap.h"
 
-void	sa(int *sa)
+int	check_same_nums(t_list *d)
 {
-	int	temp;
+	int	i;
 
-	temp = sa[0];
-	sa[0] = sa[1];
-	sa[1] = temp;
-	write(1, "sa\n", 3);
+	i = 0;
+	while (i <= d->sia - 1)
+	{
+		if (ft_check(d, d->sa[i], i) == 1)
+			i++;
+		else
+			return (-1);
+	}
+	return (0);
 }

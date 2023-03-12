@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pa.c                                               :+:      :+:    :+:   */
+/*   moves_1a.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gemartin <gemartin@student.42barc...>      +#+  +:+       +#+        */
+/*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/02 13:25:14 by gemartin          #+#    #+#             */
-/*   Updated: 2022/07/08 13:46:30 by gemartin         ###   ########.fr       */
+/*   Created: 2023/03/12 17:44:03 by drosell-          #+#    #+#             */
+/*   Updated: 2023/03/12 17:44:03 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/pushswap.h"
+#include "pushswap.h"
 
 void	pa(t_list *d)
 {
@@ -32,4 +32,40 @@ void	pa(t_list *d)
 		i++;
 	}
 	write(1, "pa\n", 3);
+}
+
+void	ra(t_list *d)
+{
+	int	i;
+
+	i = 0;
+	while (i + 1 < d->sia)
+	{
+		swap(&d->sa[i], &d->sa[i + 1]);
+		i++;
+	}
+	write(1, "ra\n", 3);
+}
+
+void	rra(t_list *d)
+{
+	int	i;
+
+	i = d->sia - 1;
+	while (i > 0)
+	{
+		swap(&d->sa[i], &d->sa[i - 1]);
+		i--;
+	}
+	write(1, "rra\n", 4);
+}
+
+void	sa(int *sa)
+{
+	int	temp;
+
+	temp = sa[0];
+	sa[0] = sa[1];
+	sa[1] = temp;
+	write(1, "sa\n", 3);
 }

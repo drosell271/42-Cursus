@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gemartin <gemartin@student.42barc...>      +#+  +:+       +#+        */
+/*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 12:25:41 by gemartin          #+#    #+#             */
-/*   Updated: 2022/04/13 18:35:36 by marvin           ###   ########.fr       */
+/*   Updated: 2023/03/12 17:50:41 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/pushswap.h"
+#include "pushswap.h"
 
 int		arg_to_int(t_list *d, int arc, char **args);
 int		ft_choose_size(int arc, t_list *d);

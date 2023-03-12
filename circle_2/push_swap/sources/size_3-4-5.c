@@ -1,16 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   size5.c                                            :+:      :+:    :+:   */
+/*   size_3-4-5.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/11 06:31:10 by marvin            #+#    #+#             */
-/*   Updated: 2022/04/13 09:03:41 by marvin           ###   ########.fr       */
+/*   Created: 2023/03/12 17:44:11 by drosell-          #+#    #+#             */
+/*   Updated: 2023/03/12 17:44:11 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "pushswap.h"
 
-#include "../inc/pushswap.h"
+void	size3(int *s, t_list *d)
+{
+	if (d->argc == 2)
+	{
+		if (s[0] > s[1])
+			sa(s);
+	}
+	else if (s[0] < s[1] && s[0] < s[2] && s[1] < s[2])
+		;
+	else if (s[0] < s[1] && s[0] < s[2] && s[1] > s[2])
+	{
+		rra(d);
+		sa(s);
+	}
+	else if (s[0] > s[1] && s[0] < s[2] && s[1] < s[2])
+		sa(s);
+	else if (s[0] < s[1] && s[0] > s[2] && s[1] > s[2])
+		rra(d);
+	else if (s[1] < s[2] && s[0] > s[1] && s[0] > s[2])
+		ra(d);
+	else if (s[1] > s[2] && s[0] > s[1] && s[0] > s[2])
+	{
+		ra(d);
+		sa(s);
+	}
+}
 
 void	size4(int *s, t_list *d)
 {

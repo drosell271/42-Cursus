@@ -1,16 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rrr.c                                              :+:      :+:    :+:   */
+/*   other_moves.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gemartin <gemartin@student.42barc...>      +#+  +:+       +#+        */
+/*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/02 13:57:29 by gemartin          #+#    #+#             */
-/*   Updated: 2022/04/07 23:10:38 by marvin           ###   ########.fr       */
+/*   Created: 2023/03/12 17:44:17 by drosell-          #+#    #+#             */
+/*   Updated: 2023/03/12 17:44:17 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "pushswap.h"
 
-#include "../inc/pushswap.h"
+void	rr(t_list *d)
+{
+	int	i;
+
+	i = 0;
+	while (i + 1 < d->sia)
+	{
+		swap(&d->sa[i], &d->sa[i + 1]);
+		i++;
+	}
+	i = 0;
+	while (i + 1 < d->sib)
+	{
+		swap(&d->sb[i], &d->sb[i + 1]);
+		i++;
+	}
+	write(1, "rr\n", 3);
+}
 
 void	rrr(t_list *d)
 {
@@ -29,4 +47,13 @@ void	rrr(t_list *d)
 		i--;
 	}
 	write(1, "rrr\n", 4);
+}
+
+void	swap(int *argv1, int *argv2)
+{
+	int	temp;
+
+	temp = *argv1;
+	*argv1 = *argv2;
+	*argv2 = temp;
 }

@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gemartin <gemartin@student.42barc...>      +#+  +:+       +#+        */
+/*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 01:26:42 by gemartin          #+#    #+#             */
-/*   Updated: 2022/04/13 18:19:44 by marvin           ###   ########.fr       */
+/*   Updated: 2023/03/12 17:52:05 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef PUSHSWAP_H
+
 # define PUSHSWAP_H
 
 # include<unistd.h>

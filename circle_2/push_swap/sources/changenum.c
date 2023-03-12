@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   changenum.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gemartin <gemartin@student.42barc...>      +#+  +:+       +#+        */
+/*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 01:40:05 by gemartin          #+#    #+#             */
-/*   Updated: 2022/04/13 11:37:17 by marvin           ###   ########.fr       */
+/*   Updated: 2023/03/12 17:52:12 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/pushswap.h"
+#include "pushswap.h"
 
 void	changenum(t_list *d)
 {

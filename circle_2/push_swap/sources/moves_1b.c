@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pb.c                                               :+:      :+:    :+:   */
+/*   moves_1b.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gemartin <gemartin@student.42barc...>      +#+  +:+       +#+        */
+/*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/02 18:15:54 by gemartin          #+#    #+#             */
-/*   Updated: 2022/04/13 17:00:52 by marvin           ###   ########.fr       */
+/*   Created: 2023/03/12 17:44:01 by drosell-          #+#    #+#             */
+/*   Updated: 2023/03/12 17:44:01 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/pushswap.h"
+#include "pushswap.h"
 
 void	pb(t_list *d)
 {
@@ -32,4 +32,42 @@ void	pb(t_list *d)
 		i++;
 	}
 	write(1, "pb\n", 3);
+}
+
+void	rb(t_list *d)
+{
+	int	i;
+
+	i = 0;
+	while (i + 1 < d->sib)
+	{
+		swap(&d->sb[i], &d->sb[i + 1]);
+		i++;
+	}
+	write(1, "rb\n", 3);
+}
+
+void	rrb(t_list *d)
+{
+	int	i;
+	int	j;
+
+	i = d->sib - 1;
+	j = 0;
+	while (i - 1 >= 0)
+	{
+		swap(&d->sb[i], &d->sb[i - 1]);
+		i--;
+	}
+	write(1, "rrb\n", 4);
+}
+
+void	sb(int *sb)
+{
+	int	temp;
+
+	temp = sb[0];
+	sb[0] = sb[1];
+	sb[1] = temp;
+	write(1, "sb\n", 3);
 }

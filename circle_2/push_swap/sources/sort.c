@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ra.c                                               :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gemartin <gemartin@student.42barc...>      +#+  +:+       +#+        */
+/*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/02 13:43:27 by gemartin          #+#    #+#             */
-/*   Updated: 2022/04/07 23:08:29 by marvin           ###   ########.fr       */
+/*   Created: 2023/03/12 17:44:57 by drosell-          #+#    #+#             */
+/*   Updated: 2023/03/12 17:44:57 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "pushswap.h"
 
-#include "../inc/pushswap.h"
-
-void	ra(t_list *d)
+void	sortnum(t_list *d)
 {
 	int	i;
+	int	c;
+	int	j;
 
 	i = 0;
-	while (i + 1 < d->sia)
+	c = 0;
+	j = d->argc;
+	while (c < j)
 	{
-		swap(&d->sa[i], &d->sa[i + 1]);
-		i++;
+		while (i < j - 1)
+		{
+			if (d->sp[i] > d->sp[i + 1])
+				swap(&d->sp[i], &d->sp[i + 1]);
+			i++;
+		}
+		i = 0;
+		c++;
 	}
-	write(1, "ra\n", 3);
 }
