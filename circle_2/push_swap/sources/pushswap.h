@@ -16,6 +16,25 @@
 # include<stdlib.h>
 # include<limits.h>
 
+/*
+Esta es la definición de la estructura t_list. Tiene varios campos que se utilizan para almacenar información importante para el programa de ordenamiento. Algunos de los campos importantes son:
+
+sa: un puntero a un array de enteros que contiene los números a ordenar.
+sb: un puntero a un array de enteros que se utiliza como stack auxiliar en el algoritmo de ordenamiento.
+sp: un puntero a un array de enteros que se utiliza para almacenar una copia del array original antes de ordenarlo.
+sia, sib, sip: enteros que indican el tamaño actual de los stacks sa, sb, y sp respectivamente.
+argc: un entero que indica la cantidad de argumentos (números) que se recibieron en la línea de comandos.
+percentage: un entero que se utiliza para dividir el array en bloques más pequeños.
+lsp: un entero que indica el número más grande que falta por ordenar.
+control: un entero que se utiliza para indicar si se está ordenando un bloque de dos o tres elementos.
+cont: un entero que indica el número de bloques que se van a utilizar para dividir el array original.
+error: un entero que se utiliza para indicar si hubo algún error en el programa.
+atoierror: un entero que se utiliza para indicar si hubo algún error al convertir un número de la línea de comandos de una cadena a un entero.
+jatoi: un entero que se utiliza como índice para la conversión de números de la línea de comandos.
+size_block: un entero que indica el tamaño de los bloques en los que se divide el array original.
+argmax: un entero que indica el tamaño máximo del stack sb.
+arguments: un entero que indica la cantidad de argumentos que se deben mover en cada bloque del algoritmo de ordenamiento.
+*/
 typedef struct s_list
 {
 	int	*sa;

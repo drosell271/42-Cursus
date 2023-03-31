@@ -12,8 +12,12 @@
 
 #include "pushswap.h"
 
-int	ft_error(t_list *d, int nbr);
+//int	ft_error(t_list *d, int nbr);
 
+
+/*
+La función "ft_atoi" convierte una cadena de caracteres "str" en un número entero. La función también recibe una estructura "t_list" como argumento.
+*/
 int	ft_atoi(const char *str, t_list *d)
 {
 	int				i;
@@ -41,6 +45,12 @@ int	ft_atoi(const char *str, t_list *d)
 	return (nbr * valorfinal);
 }
 
+
+/*
+La función "ft_error" probablemente se utiliza para manejar errores en un programa que utiliza la función "ft_atoi" para convertir una cadena de caracteres en un número entero. La función recibe una estructura "t_list" y un número entero "nbr".
+
+La función establece el valor de "nbr" a cero, lo que probablemente indica que se ha producido un error al convertir la cadena en un número entero.
+*/
 int	ft_error(t_list *d, int nbr)
 {
 	nbr = 0;

@@ -12,6 +12,9 @@
 
 #include "pushswap.h"
 
+/*
+Esta función, llamada "changenum", cambia los valores numéricos de una cadena de caracteres "sa" en una estructura "t_list" por valores que indican la posición que ocupan en otra cadena de caracteres "sp" dentro de la misma estructura.
+*/
 void	changenum(t_list *d)
 {
 	int	j;

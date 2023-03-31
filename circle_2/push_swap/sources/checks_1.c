@@ -12,6 +12,9 @@
 
 #include "pushswap.h"
 
+/*
+Esta función, llamada "check_args", comprueba si los argumentos recibidos son válidos para ser utilizados en un programa determinado.
+*/
 int	check_args(char **args, int argc)
 {
 	int	i;
@@ -27,6 +30,9 @@ int	check_args(char **args, int argc)
 	return (0);
 }
 
+/*
+Esta función, llamada "check_num", comprueba si una cadena de caracteres "s" es un número válido.
+*/
 int	check_num(char *s)
 {
 	int	i;
@@ -52,6 +58,9 @@ int	check_num(char *s)
 	return (-1);
 }
 
+/*
+Esta función, llamada "check_order", comprueba si la pila de enteros "sa" en una estructura "t_list" está ordenada de manera ascendente.
+*/
 int	check_order(t_list *d)
 {
 	int	i;
@@ -71,6 +80,9 @@ int	check_order(t_list *d)
 		return (0);
 }
 
+/*
+Esta es una función estática llamada "ft_check" que verifica si un número entero "num" ya existe en la pila "sa" de la estructura "t_list" hasta la posición "j" (no inclusivo).
+*/
 static	int	ft_check(t_list *d, int num, int j)
 {
 	int	i;
@@ -85,6 +97,9 @@ static	int	ft_check(t_list *d, int num, int j)
 	return (1);
 }
 
+/*
+Esta función, llamada "check_same_nums", comprueba si hay números repetidos en la pila "sa" de la estructura "t_list".
+*/
 int	check_same_nums(t_list *d)
 {
 	int	i;

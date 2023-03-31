@@ -12,6 +12,9 @@
 
 #include "pushswap.h"
 
+/*
+Esta función, llamada "check_same_nums", comprueba si hay números repetidos en la pila "sa" de la estructura "t_list".
+*/
 int	check_same_nums(t_list *d)
 {
 	int	i;

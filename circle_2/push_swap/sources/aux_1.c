@@ -11,7 +11,9 @@
 /* ************************************************************************** */
 
 #include "pushswap.h"
-
+/*
+Esta función, llamada "ft_substr", toma una cadena de caracteres "s" y devuelve una subcadena que comienza en la posición "start" y tiene una longitud "len".
+*/
 char	*ft_substr(char *s, int start, int len)
 {
 	int		i;
@@ -36,6 +38,9 @@ char	*ft_substr(char *s, int start, int len)
 	return (copia);
 }
 
+/*
+Esta función, llamada "ft_strlen", toma una cadena de caracteres "s" como entrada y devuelve la longitud de la cadena.
+*/
 int	ft_strlen(char *s)
 {
 	int	i;
@@ -46,6 +51,9 @@ int	ft_strlen(char *s)
 	return (i);
 }
 
+/*
+Esta función, llamada "ft_isdigit", toma un entero "i" como entrada y devuelve 1 si el valor representa un dígito y 0 en caso contrario.
+*/
 int	ft_isdigit(int i)
 {
 	if (i < 48 || i > 57)
@@ -53,6 +61,9 @@ int	ft_isdigit(int i)
 	return (1);
 }
 
+/*
+Esta función, llamada "ft_free", libera la memoria asignada por la estructura "t_list" y es llamada en caso de que ocurra algún error.
+*/
 void	ft_free(t_list *d)
 {
 	if (d->sa)
@@ -75,6 +86,9 @@ void	ft_free(t_list *d)
 	exit(0);
 }
 
+/*
+Esta función, llamada "ft_free2", libera la memoria asignada por la estructura "t_list" y es llamada en caso de que ocurra algún error.
+*/
 void	ft_free2(t_list *d)
 {
 	if (d->sa)

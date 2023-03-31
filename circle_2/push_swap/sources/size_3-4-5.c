@@ -11,6 +11,9 @@
 /* ************************************************************************** */
 #include "pushswap.h"
 
+/*
+La primera función size3 recibe un puntero a un array de enteros s y un puntero a una estructura t_list llamada d. Esta función se encarga de ordenar un array de 3 enteros utilizando distintas operaciones como sa, rra, ra, entre otras.
+*/
 void	size3(int *s, t_list *d)
 {
 	if (d->argc == 2)
@@ -38,6 +41,9 @@ void	size3(int *s, t_list *d)
 	}
 }
 
+/*
+La segunda función size4 también recibe un puntero a un array de enteros s y un puntero a una estructura t_list llamada d. En esta función se ordena un array de 4 enteros utilizando distintas operaciones como sa, ra, rra, pb, entre otras.
+*/
 void	size4(int *s, t_list *d)
 {
 	if (d->sia == 4)
@@ -66,6 +72,9 @@ void	size4(int *s, t_list *d)
 	pa(d);
 }
 
+/*
+La tercera función size5_2 recibe un puntero a un array de enteros s, un puntero a una estructura t_list llamada d y un entero i. En esta función se ordena un array de 5 enteros utilizando distintas operaciones como ra, rra, pb, sa. La variable i es utilizada como un flag para determinar si ya se realizó alguna operación de intercambio en el array.
+*/
 int	size5_2(int *s, t_list *d, int i)
 {
 	if (s[0] > s[2] && s[1] > s[2] && s[2] < s[3] && s[2] < s[4] && i == 0)
@@ -91,6 +100,9 @@ int	size5_2(int *s, t_list *d, int i)
 	return (i);
 }
 
+/*
+Esta función, llamada size5, es una función que se encarga de ordenar una lista de 5 números utilizando el algoritmo de ordenamiento conocido como "sort de selección", donde se selecciona el número más pequeño y se lo coloca al principio de la lista, y se repite este proceso con los números restantes. Si la lista es de tamaño 5, la función verifica en primer lugar si el número más pequeño está en la primera posición, y si no lo está, lo mueve allí utilizando la función pb para enviar el número a la pila b. Luego, la función llama a size4 para ordenar los cuatro números restantes en la pila a. Finalmente, si el número más pequeño fue movido al principio de la lista (y por lo tanto se encuentra en la pila b), la función lo mueve de regreso a la pila a utilizando pa, y verifica si es necesario ordenar la lista utilizando la función sa para colocar los números en orden ascendente.
+*/
 void	size5(int *s, t_list *d)
 {
 	int	i;
