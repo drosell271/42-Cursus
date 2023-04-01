@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./so_long.h"
+#include "./push_swap.h"
 
 void	ordenenar_3(t_list *d, int i)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./so_long.h"
+#include "./push_swap.h"
 
 int	check_input(char **args, int argc)
 {
@@ -71,7 +71,7 @@ int	check_order(t_list *d)
 		return (0);
 }
 
-static	int	checkeos(t_list *d, int num, int j)
+int	checkeos(t_list *d, int num, int j)
 {
 	int	i;
 

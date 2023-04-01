@@ -1,73 +1,72 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moves_2.c                                          :+:      :+:    :+:   */
+/*   moves_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/01 20:55:23 by drosell-          #+#    #+#             */
-/*   Updated: 2023/04/01 20:55:23 by drosell-         ###   ########.fr       */
+/*   Created: 2023/04/01 20:53:59 by drosell-          #+#    #+#             */
+/*   Updated: 2023/04/01 20:53:59 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./so_long.h"
+#include "./push_swap.h"
 
-void	pb(t_list *d)
+void	pa(t_list *d)
 {
 	int	i;
 
-	i = d->sib;
-	d->sib = d->sib + 1;
-	d->sia = d->sia - 1;
+	i = d->sia;
+	d->sib = d->sib - 1;
+	d->sia = d->sia + 1;
 	while (i > 0)
 	{
-		swap(&d->sb[i], &d->sb[i - 1]);
+		swap(&d->sa[i], &d->sa[i - 1]);
 		i--;
 	}
-	d->sb[0] = d->sa[0];
+	d->sa[0] = d->sb[0];
 	i = 0;
-	while (i <= d->sia - 1)
+	while (i <= d->sib)
 	{
-		d->sa[i] = d->sa[i + 1];
+		d->sb[i] = d->sb[i + 1];
 		i++;
 	}
-	write(1, "pb\n", 3);
+	write(1, "pa\n", 3);
 }
 
-void	rb(t_list *d)
+void	ra(t_list *d)
 {
 	int	i;
 
 	i = 0;
-	while (i + 1 < d->sib)
+	while (i + 1 < d->sia)
 	{
-		swap(&d->sb[i], &d->sb[i + 1]);
+		swap(&d->sa[i], &d->sa[i + 1]);
 		i++;
 	}
-	write(1, "rb\n", 3);
+	write(1, "ra\n", 3);
 }
 
-void	rrb(t_list *d)
+void	rra(t_list *d)
 {
 	int	i;
-	int	j;
 
-	i = d->sib - 1;
-	j = 0;
-	while (i - 1 >= 0)
+	i = d->sia - 1;
+	while (i > 0)
 	{
-		swap(&d->sb[i], &d->sb[i - 1]);
+		swap(&d->sa[i], &d->sa[i - 1]);
 		i--;
 	}
-	write(1, "rrb\n", 4);
+	write(1, "rra\n", 4);
 }
 
-void	sb(int *sb)
+void	sa(int *sa)
 {
 	int	temp;
 
-	temp = sb[0];
-	sb[0] = sb[1];
-	sb[1] = temp;
-	write(1, "sb\n", 3);
+	temp = sa[0];
+	sa[0] = sa[1];
+	sa[1] = temp;
+	write(1, "sa\n", 3);
 }
+

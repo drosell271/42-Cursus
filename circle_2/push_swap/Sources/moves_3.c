@@ -1,40 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moves_1.c                                          :+:      :+:    :+:   */
+/*   moves_3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: drosell- <drosell-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/01 20:53:59 by drosell-          #+#    #+#             */
-/*   Updated: 2023/04/01 20:53:59 by drosell-         ###   ########.fr       */
+/*   Created: 2023/04/01 20:56:40 by drosell-          #+#    #+#             */
+/*   Updated: 2023/04/01 20:56:40 by drosell-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./so_long.h"
+#include "./push_swap.h"
 
-void	pa(t_list *d)
-{
-	int	i;
 
-	i = d->sia;
-	d->sib = d->sib - 1;
-	d->sia = d->sia + 1;
-	while (i > 0)
-	{
-		swap(&d->sa[i], &d->sa[i - 1]);
-		i--;
-	}
-	d->sa[0] = d->sb[0];
-	i = 0;
-	while (i <= d->sib)
-	{
-		d->sb[i] = d->sb[i + 1];
-		i++;
-	}
-	write(1, "pa\n", 3);
-}
-
-void	ra(t_list *d)
+void	rr(t_list *d)
 {
 	int	i;
 
@@ -44,10 +23,16 @@ void	ra(t_list *d)
 		swap(&d->sa[i], &d->sa[i + 1]);
 		i++;
 	}
-	write(1, "ra\n", 3);
+	i = 0;
+	while (i + 1 < d->sib)
+	{
+		swap(&d->sb[i], &d->sb[i + 1]);
+		i++;
+	}
+	write(1, "rr\n", 3);
 }
 
-void	rra(t_list *d)
+void	rrr(t_list *d)
 {
 	int	i;
 
@@ -57,16 +42,20 @@ void	rra(t_list *d)
 		swap(&d->sa[i], &d->sa[i - 1]);
 		i--;
 	}
-	write(1, "rra\n", 4);
+	i = d->sib - 1;
+	while (i - 1 >= 0)
+	{
+		swap(&d->sb[i], &d->sb[i - 1]);
+		i--;
+	}
+	write(1, "rrr\n", 4);
 }
 
-void	sa(int *sa)
+void	swap(int *argv1, int *argv2)
 {
 	int	temp;
-
-	temp = sa[0];
-	sa[0] = sa[1];
-	sa[1] = temp;
-	write(1, "sa\n", 3);
+	
+	temp = *argv1;
+	*argv1 = *argv2;
+	*argv2 = temp;
 }
-

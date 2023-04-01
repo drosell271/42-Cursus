@@ -56,7 +56,7 @@ CHECKEOS
 int				check_input(char **args, int argc);
 int				check_num(char *s);
 int				check_order(t_list *d);
-static	int		checkeos(t_list *d, int num, int j);
+int		checkeos(t_list *d, int num, int j);
 int				check_iguales(t_list *d);
 
 /*
