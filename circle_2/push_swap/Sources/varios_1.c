@@ -16,19 +16,19 @@ void	liberar(t_list *d)
 {
 	if (d->sa)
 	{
-		liberar(d->sa);
+		free(d->sa);
 	}
 	if (d->sb)
 	{
-		liberar(d->sb);
+		free(d->sb);
 	}
 	if (d->sp)
 	{
-		liberar(d->sp);
+		free(d->sp);
 	}
 	if (d)
 	{
-		liberar(d);
+		free(d);
 	}
 	write(2, "Error\n", 6);
 	exit(0);
@@ -38,22 +38,22 @@ void	liberar2(t_list *d)
 {
 	if (d->sa)
 	{
-		liberar(d->sa);
+		free(d->sa);
 		d->sa = NULL;
 	}
 	if (d->sb)
 	{
-		liberar(d->sb);
+		free(d->sb);
 		d->sb = NULL;
 	}
 	if (d->sp)
 	{
-		liberar(d->sp);
+		free(d->sp);
 		d->sp = NULL;
 	}
 	if (d)
 	{
-		liberar(d);
+		free(d);
 		d = NULL;
 	}
 	exit(0);

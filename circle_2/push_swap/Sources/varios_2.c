@@ -80,22 +80,22 @@ int	preparar(t_list *d)
 	d->sa = malloc(sizeof(int) * d->argc);
 	if (!d->sa)
 	{
-		liberar(d);
+		free(d);
 		return (-1);
 	}
 	d->sp = malloc(sizeof(int) * d->argc);
 	if (!d->sp)
 	{
-		liberar(d->sa);
-		liberar(d);
+		free(d->sa);
+		free(d);
 		return (-1);
 	}
 	d->sb = malloc(sizeof(int) * d->argc);
 	if (!d->sb)
 	{
-		liberar(d->sp);
-		liberar(d->sa);
-		liberar(d);
+		free(d->sp);
+		free(d->sa);
+		free(d);
 		return (-1);
 	}
 	d->sia = d->argc;

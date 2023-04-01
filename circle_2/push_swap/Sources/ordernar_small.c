@@ -30,9 +30,7 @@ void	ordenenar_3(t_list *d, int i)
 void	ordenenar_2(t_list *d)
 {
 	int	i;
-	int	j;
 
-	j = 0;
 	i = d->lsp;
 	while (d->sib < 1)
 	{
@@ -46,9 +44,7 @@ void	ordenenar_2(t_list *d)
 void	ordenenar_s(t_list *d)
 {
 	int	i;
-	int	j;
 
-	j = 0;
 	i = d->lsp;
 	while (d->sib <= (d->argc / 2))
 	{

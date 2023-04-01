@@ -91,6 +91,6 @@ help:
 	@echo "\tclean: Delete '.o'."
 	@echo "\tfclean: Delete'.o', '${NLIBRARY}' and '${NAME}'"
 	@echo "\tre: Delete '.o', '${NLIBRARY}', '${NAME}' and creates '${NAME}'"
-	@echo "MakeFile by tvillare."
+	@echo "MakeFile by drosell-."
 
 .PHONY = all clean fclean re help
