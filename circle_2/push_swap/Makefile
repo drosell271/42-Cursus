@@ -34,28 +34,28 @@ RMFLAGS = -f
 COLOUR_RED=\033[0;31m
 COLOUR_GREEN=\033[0;32m
 COLOUR_END=\033[0m
-OBL_MSG = COMPILACION COMPLETADA
+OBL_MSG = COMPILADA LA PARTE OBLIGATORIA
 CLN_MSG = CLEAN FINALIZADO
 FCLN_MSG = FCLEAN FINALIZADO
 
 all: $(NAME)
 
 clean:
-	@$(RM) $(RMFLAGS) -f $(OBJS) $(OBJS_B)
+	@$(RM) $(RMFLAGS) -f $(OBJS)
 	@echo "$(COLOUR_RED)$(CLN_MSG)$(COLOUR_END)"
 
 fclean:
-	@$(RM) $(RMFLAGS) -f $(OBJS) $(OBJS_B)
+	@$(RM) $(RMFLAGS) -f $(OBJS)
 	@$(RM) $(RMFLAGS) $(NAME)
 	@echo "$(COLOUR_RED)$(FCLN_MSG)$(COLOUR_END)"
 
 re: fclean all
 
-$(NAME): $(TOTAL_OBJS)
+$(NAME): $(OBJS)
 	@$(AR) $(ARFLAGS) $@ $^
-	@echo "$(COLOUR_GREEN)$(MSG)$(COLOUR_END)"
+	@echo "$(COLOUR_GREEN)$(OBL_MSG)$(COLOUR_END)"
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c $<
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
