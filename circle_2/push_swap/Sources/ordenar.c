@@ -62,10 +62,10 @@ La función ordenenar_sb es una función auxiliar del algoritmo de ordenamiento
 de pilas y se encarga de ordenar el arreglo d->sb. Utiliza un ciclo while para
 iterar mientras la cantidad de elementos en d->sa es menor que d->argc. Luego,
 utiliza condicionales para determinar qué operaciones realizar en d->sb, como
-llamar a la función pa si el primer elemento de d->sb es igual a d->lsp, llamar
-a las funciones pa y ra si el primer elemento de d->sb es igual al segundo
-elemento más grande en d->sa y establecer d->control en 2, o llamar a la
-función ordenenar_sbr o calcular según el valor devuelto por la función
+llamar a la función pa si el primer elemento de d->sb es igual a d->lsp,
+llamar a las funciones pa y ra si el primer elemento de d->sb es igual al
+segundo elemento más grande en d->sa y establecer d->control en 2, o llamar
+a la función ordenenar_sbr o calcular según el valor devuelto por la función
 comprueba_movimiento.
 */
 void	ordenenar_sb(t_list *d)
