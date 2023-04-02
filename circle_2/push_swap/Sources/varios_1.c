@@ -111,11 +111,11 @@ void	calcular(t_list *d)
 }
 
 /*
-La función "comprueba_movimiento" verifica si el número en la parte superior de la
-pila B está más cerca del fondo o del tope de la pila. Si está más cerca del fondo,
-devuelve -1, lo que indica que se debe ejecutar una rotación hacia abajo en la
-pila B. Si está más cerca del tope, devuelve 0, lo que indica que no es
-necesario realizar ninguna rotación en la pila B.
+La función "comprueba_movimiento" verifica si el número en la parte
+superior de la pila B está más cerca del fondo o del tope de la pila.
+Si está más cerca del fondo, devuelve -1, lo que indica que se debe ejecutar
+una rotación hacia abajo en la pila B. Si está más cerca del tope, devuelve
+0, lo que indica que no es necesario realizar ninguna rotación en la pila B.
 */
 int	comprueba_movimiento(t_list *d)
 {
