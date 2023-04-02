@@ -135,13 +135,14 @@ int	comprueba_movimiento(t_list *d)
 }
 
 /*
-La función sort recibe un puntero a una estructura t_list, la cual contiene un arreglo
-de enteros sp con argc elementos a ordenar. La función ordena el arreglo utilizando
-el algoritmo de ordenamiento burbuja, el cual itera sobre el arreglo varias veces,
-comparando elementos adyacentes y cambiándolos de lugar si no están en la posición
-correcta. Después de cada iteración, el algoritmo disminuye el tamaño del arreglo
-que está siendo ordenado en una unidad. La función no devuelve nada, pero modifica
-directamente el arreglo sp dentro de la estructura t_list.
+La función sort recibe un puntero a una estructura t_list, la cual contiene
+un arreglo de enteros sp con argc elementos a ordenar. La función ordena el
+arreglo utilizando el algoritmo de ordenamiento burbuja, el cual itera sobre
+el arreglo varias veces, comparando elementos adyacentes y cambiándolos de
+lugar si no están en la posición correcta. Después de cada iteración, el
+algoritmo disminuye el tamaño del arreglo que está siendo ordenado en una
+unidad. La función no devuelve nada, pero modifica directamente el arreglo
+sp dentro de la estructura t_list.
 */
 void	sort(t_list *d)
 {
