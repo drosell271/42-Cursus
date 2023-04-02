@@ -56,7 +56,7 @@ SRC			=	push_swap.c \
 				moves_2.c \
 				moves_3.c \
 				ordenar.c \
-				ordenar_small.c \
+				ordernar_small.c \
 				tamano_big.c \
 				tamano_small.c \
 				varios_1.c \
