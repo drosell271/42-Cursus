@@ -42,10 +42,10 @@ void	liberar(t_list *d)
 }
 
 /*
-La función liberar2 libera la memoria de los punteros en la estructura t_list (d)
-y luego sale del programa. A diferencia de liberar, después de liberar la memoria,
-se establece cada puntero en NULL y la variable d se establece en NULL para
-evitar errores posteriores en el programa.
+La función liberar2 libera la memoria de los punteros en la estructura t_list
+(d) y luego sale del programa. A diferencia de liberar, después de liberar la
+memoria, se establece cada puntero en NULL y la variable d se establece en NULL
+para evitar errores posteriores en el programa.
 */
 void	liberar2(t_list *d)
 {
@@ -73,12 +73,13 @@ void	liberar2(t_list *d)
 }
 
 /*
-Esta función implementa una lógica para ordenar un conjunto de números en una pila y
-una pila auxiliar en una sola pila. Si el elemento superior de la pila auxiliar es
-el número esperado en la posición final, lo mueve a la pila original. Si el número
-no es el esperado, se mueve la pila auxiliar en sentido horario y se repite el
-proceso. También tiene en cuenta ciertos casos especiales para mover varios
-elementos al mismo tiempo y hacer swaps entre elementos en la pila original.
+Esta función implementa una lógica para ordenar un conjunto de números en una
+pila y una pila auxiliar en una sola pila. Si el elemento superior de la pila
+auxiliar es el número esperado en la posición final, lo mueve a la pila
+original. Si el número no es el esperado, se mueve la pila auxiliar en
+sentido horario y se repite el proceso. También tiene en cuenta ciertos casos
+especiales para mover varios elementos al mismo tiempo y hacer swaps entre
+elementos en la pila original.
 */
 void	calcular(t_list *d)
 {
@@ -112,9 +113,9 @@ void	calcular(t_list *d)
 /*
 La función "comprueba_movimiento" verifica si el número en la parte superior de la
 pila B está más cerca del fondo o del tope de la pila. Si está más cerca del fondo,
-devuelve -1, lo que indica que se debe ejecutar una rotación hacia abajo en la pila B.
-Si está más cerca del tope, devuelve 0, lo que indica que no es necesario realizar
-ninguna rotación en la pila B.
+devuelve -1, lo que indica que se debe ejecutar una rotación hacia abajo en la
+pila B. Si está más cerca del tope, devuelve 0, lo que indica que no es
+necesario realizar ninguna rotación en la pila B.
 */
 int	comprueba_movimiento(t_list *d)
 {
