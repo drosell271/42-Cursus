@@ -12,6 +12,11 @@
 
 #include "./push_swap.h"
 
+/*
+La función ft_substr toma una cadena de caracteres s, un índice de inicio start
+y una longitud len, y devuelve una nueva cadena de caracteres que es una
+subcadena de s que comienza en el índice start y tiene una longitud de len.
+*/
 char	*ft_substr(char *s, int start, int len)
 {
 	int		i;

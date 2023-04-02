@@ -39,4 +39,3 @@ int	main(int arc, char **args)
 	liberar2(d);
 	return (0);
 }
-

@@ -69,4 +69,3 @@ void	sa(int *sa)
 	sa[1] = temp;
 	write(1, "sa\n", 3);
 }
-

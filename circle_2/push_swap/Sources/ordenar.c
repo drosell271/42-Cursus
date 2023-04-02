@@ -12,7 +12,7 @@
 
 #include "./push_swap.h"
 
-void ordenenar_sbr(t_list *d)
+void	ordenenar_sbr(t_list *d)
 {
 	if (d->sb[0] == d->lsp -2 && d->control == 1)
 	{
