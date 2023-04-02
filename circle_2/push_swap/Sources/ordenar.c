@@ -56,7 +56,6 @@ void	ordenenar_sbr(t_list *d)
 		rrb(d);
 }
 
-
 /*
 La función ordenenar_sb es una función auxiliar del algoritmo de ordenamiento
 de pilas y se encarga de ordenar el arreglo d->sb. Utiliza un ciclo while para
