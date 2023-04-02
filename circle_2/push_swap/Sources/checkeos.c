@@ -12,6 +12,13 @@
 
 #include "./push_swap.h"
 
+/*
+La función check_input toma un arreglo de cadenas de caracteres args y un
+número entero argc que representa el número de elementos en el arreglo.
+La función verifica si cada elemento en el arreglo es un número válido.
+Si alguno de los elementos no es un número válido, la función devuelve -1.
+Si todos los elementos son números válidos, la función devuelve 0.
+*/
 int	check_input(char **args, int argc)
 {
 	int	i;
@@ -27,6 +34,12 @@ int	check_input(char **args, int argc)
 	return (0);
 }
 
+/*
+La función check_num toma una cadena de caracteres s como entrada y verifica
+si la cadena representa un número válido. Si la cadena representa un número
+válido, la función devuelve 0. Si la cadena no representa un número válido,
+la función devuelve -1.
+*/
 int	check_num(char *s)
 {
 	int	i;
@@ -52,6 +65,13 @@ int	check_num(char *s)
 	return (-1);
 }
 
+/*
+La función check_order toma un puntero a una estructura de lista d como
+entrada y verifica si los elementos en el arreglo d->sa están en orden
+ascendente. Si los elementos están en orden ascendente, la función
+devuelve 0. Si los elementos no están en orden ascendente, la función
+devuelve -1.
+*/
 int	check_order(t_list *d)
 {
 	int	i;
@@ -71,6 +91,14 @@ int	check_order(t_list *d)
 		return (0);
 }
 
+/*
+La función checkeos toma un puntero a una estructura de lista d,
+un número entero num y un índice entero j como entrada. La función
+verifica si el número num ya está presente en los primeros j elementos
+del arreglo d->sa. Si el número no está presente en el arreglo, la
+función devuelve 1. Si el número ya está presente en el arreglo,
+la función devuelve 0.
+*/
 int	checkeos(t_list *d, int num, int j)
 {
 	int	i;
@@ -85,6 +113,13 @@ int	checkeos(t_list *d, int num, int j)
 	return (1);
 }
 
+/*
+La función check_iguales toma un puntero a una estructura de
+lista d como entrada y verifica si todos los elementos en
+el arreglo d->sa son únicos (es decir, si no hay elementos duplicados).
+Si todos los elementos son únicos, la función devuelve 0.
+Si hay elementos duplicados, la función devuelve -1.
+*/
 int	check_iguales(t_list *d)
 {
 	int	i;

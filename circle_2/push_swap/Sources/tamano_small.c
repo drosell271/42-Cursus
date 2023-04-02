@@ -12,6 +12,15 @@
 
 #include "./push_swap.h"
 
+/*
+Esta función se encarga de ordenar un arreglo de 3 elementos.
+
+Primero se comprueba si el arreglo es de longitud 2, en cuyo caso se verifica
+si el primer elemento es mayor que el segundo y si es así, se intercambian los
+elementos usando la función "sa". Si el arreglo es de longitud 3, se aplican
+una serie de comprobaciones y movimientos para colocar los elementos en orden
+ascendente utilizando las funciones "sa", "rra" y "ra".
+*/
 void	tamano_3(int *s, t_list *d)
 {
 	if (d->argc == 2)
@@ -39,6 +48,16 @@ void	tamano_3(int *s, t_list *d)
 	}
 }
 
+/*
+La función "tamano_4" recibe una lista de 4 elementos "s" y un puntero a la
+estructura "t_list" llamado "d". Esta función se encarga de ordenar los
+elementos de la lista de manera que los 2 elementos más pequeños se coloquen
+en la pila B, y los 2 elementos más grandes permanezcan en la pila A. Si la
+lista tiene 3 elementos, llama a la función "tamano_3" para ordenarlos.
+
+En ambos casos, la función termina devolviendo los elementos de la pila B a
+la pila A en orden ascendente.
+*/
 void	tamano_4(int *s, t_list *d)
 {
 	if (d->sia == 4)
@@ -67,6 +86,15 @@ void	tamano_4(int *s, t_list *d)
 	pa(d);
 }
 
+/*
+La función tamano_5_1 es una función auxiliar para ordenar un array de tamaño 5.
+La función utiliza la función tamano_5_2 para continuar ordenando el array de
+entrada. Después de ordenar el array con la función tamano_5_2, la función
+ordena los 4 elementos restantes utilizando la función tamano_4, y luego
+verifica si el elemento en la cima de la pila auxiliar necesita ser devuelto a
+la pila original y si es así, lo devuelve y continúa ordenando los elementos en
+la pila original.
+*/
 void	tamano_5_1(int *s, t_list *d)
 {
 	int	i;
@@ -96,6 +124,15 @@ void	tamano_5_1(int *s, t_list *d)
 	}
 }
 
+/*
+La función tamano_5_2 recibe un puntero a un arreglo de enteros s, un puntero a
+una estructura t_list llamada d y un entero i. La función compara los elementos
+del arreglo s y realiza operaciones de push y rotación en la pila d->sa para
+ordenar los elementos de manera ascendente. Si encuentra un número menor que los
+otros 4, lo mueve a la pila d->sb mediante un push. Si logra mover un número a la
+pila d->sb, devuelve un valor de 1. En caso contrario, devuelve el valor original
+de i, que es 0.
+*/
 int	tamano_5_2(int *s, t_list *d, int i)
 {
 	if (s[0] > s[2] && s[1] > s[2] && s[2] < s[3] && s[2] < s[4] && i == 0)

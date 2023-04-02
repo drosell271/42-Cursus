@@ -41,6 +41,10 @@ char	*ft_substr(char *s, int start, int len)
 	return (temp);
 }
 
+/*
+La función ft_strlen toma una cadena de caracteres s como entrada y devuelve
+la longitud de la cadena.
+*/
 int	ft_strlen(char *s)
 {
 	int	i;
@@ -51,6 +55,11 @@ int	ft_strlen(char *s)
 	return (i);
 }
 
+/*
+La función ft_isdigit toma un valor entero i que representa el código ASCII
+de un carácter como entrada y devuelve 1 si el carácter es un dígito
+decimal (0 a 9), y 0 en caso contrario.
+*/
 int	ft_isdigit(int i)
 {
 	if (i < 48 || i > 57)
@@ -58,6 +67,12 @@ int	ft_isdigit(int i)
 	return (1);
 }
 
+/*
+La función ft_atoi convierte una cadena de caracteres str que representa
+un número en un entero de tipo int. La función también acepta un puntero
+a una estructura de lista d que se utiliza para gestionar errores en caso
+de que el número esté fuera del rango de un entero de tipo int.
+*/
 int	ft_atoi(const char *str, t_list *d)
 {
 	int				i;

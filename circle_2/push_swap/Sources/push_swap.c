@@ -12,6 +12,33 @@
 
 #include "./push_swap.h"
 
+/*
+Esta función es la función principal del programa. En resumen, lo que hace es:
+
+1. Crea una estructura t_list llamada d con memoria dinámica y comprueba que
+se haya creado correctamente.
+
+2. Comprueba que la entrada del programa sea válida mediante la función
+check_input y libera la memoria si no lo es.
+
+3. Establece el número de argumentos (sin contar el nombre del programa)
+y el valor de error en 0.
+
+4. Prepara la estructura d llamando a la función preparar. Si esta función
+devuelve -1, libera la memoria y sale del programa.
+
+5. Procesa la entrada del usuario y guarda los valores en la estructura d.
+Si la función input_process devuelve -1, libera la memoria y sale del
+programa.
+
+6. Comprueba que los números estén desordenados llamando a la función
+check_order. Si devuelve -1, libera la memoria y sale del programa.
+
+7. Elige el tamaño del bloque y guarda el resultado en la estructura d.
+Si devuelve -1, libera la memoria y sale del programa.
+
+8. Libera la memoria y termina el programa.
+*/
 int	main(int arc, char **args)
 {
 	t_list	*d;
